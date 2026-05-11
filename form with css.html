@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e6eef7, #f5f7fa);
+            margin: 0;
+            padding: 0;
+        }
+
+        h2{
+            text-align: center;
+            color: #1f3c88;
+            margin-top: 25px;
+        }
+
+        form{
+            width: 45%;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-top: 5px solid #1f3c88;
+        }
+
+        label{
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-top: 12px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        textarea,
+        select{
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.3s;
+            background: #f9fbfd;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus{
+            border-color: #1f3c88;
+            box-shadow: 0 0 6px rgba(31,60,136,0.3);
+            background: #fff;
+        }
+
+        textarea{
+            resize: none;
+        }
+
+        .group{
+            margin-top: 8px;
+            color: #444;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"]{
+            margin-right: 6px;
+            accent-color: #1f3c88;
+        }
+
+        input[type="submit"]{
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background: #1f3c88;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover{
+            background: #162c63;
+        }
+
+        select{
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h2>Registration Form</h2>
+<marquee behavior="scroll" direction="left">
+    Welcome to Our College Registration Portal | Admissions Open 2026 | Apply Now
+</marquee>
+
+<form>
+
+    <label>Full Name:</label>
+    <input type="text" name="name" required>
+
+    <label>Email:</label>
+    <input type="email" name="email" required>
+
+    <label>Password:</label>
+    <input type="password" name="password" required>
+
+    <label>Contact Number:</label>
+    <input type="tel" name="contact" required>
+
+    <label>Address:</label>
+    <textarea name="address" rows="4" required></textarea>
+
+    <label>State:</label>
+    <select name="state" required>
+        <option>Select State</option>
+        <option>Gujarat</option>
+        <option>Maharashtra</option>
+        <option>Rajasthan</option>
+        <option>Delhi</option>
+        <option>Punjab</option>
+        <option>Karnataka</option>
+        <option>Tamilnadu</option>
+        <option>Goa</option>
+        <option>Madhya Pradesh</option>
+        <option>Uttar Pradesh</option>
+        <option>Bihar</option>
+    </select>
+
+    <label>Gender:</label>
+    <div class="group">
+        <input type="radio" name="gender"> Male
+        <input type="radio" name="gender"> Female
+        <input type="radio" name="gender"> Other
+    </div>
+
+    <label>Hobbies:</label>
+    <div class="group">
+        <input type="checkbox"> Cricket
+        <input type="checkbox"> Football
+        <input type="checkbox"> Basketball
+        <input type="checkbox"> Volleyball
+        <input type="checkbox"> Badminton
+        <input type="checkbox"> Gym
+        <input type="checkbox"> Yoga
+        <input type="checkbox"> Reading
+        <input type="checkbox"> Music
+        <input type="checkbox"> Traveling
+        <input type="checkbox"> Exploring
+    </div>
+
+    <input type="submit" value="Submit">
+
+    <div class="media">
+
+        <h3>Our Campus Image</h3>
+        <img src="" alt="Campus Image">
+
+        <h3>Welcome Audio</h3>
+        <audio controls>
+            <source src="welcome.mp3" type="audio/mpeg">
+            Your browser does not support audio.
+        </audio>
+
+        <h3>Intro Video</h3>
+        <video controls>
+            <source src="intro.mp4" type="video/mp4">
+            Your browser does not support video.
+        </video>
+
+    </div>
+    <div class="box">
+
+    <h3>College Website Preview (Iframe)</h3>
+
+    <iframe 
+        src="https://www.wikipedia.org"
+        width="100%"
+        height="300">
+    </iframe>
+
+</div>
+
+</form>
+
+</body>
+</html>

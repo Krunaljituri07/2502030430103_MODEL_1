@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Second Year B.Tech Time Table</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        h2{
+            text-align: center;
+            margin-top: 20px;
+            color: #222;
+        }
+
+        table{
+            width: 95%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+
+        th, td{
+            border: 1px solid #999;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        th{
+            background-color: #222;
+            color: white;
+        }
+
+        /* Individual Cell Hover Effect */
+        td:hover{
+            background-color: #d6eaf8;
+            cursor: pointer;
+        }
+
+        .break{
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .lab{
+            font-weight: bold;
+            background-color: #fafafa;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h2>Second Year B.Tech Time Table</h2>
+
+<table>
+
+    <tr>
+        <th>Time</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+    </tr>
+
+    <tr>
+        <td><b>10:00 - 11:00</b></td>
+        <td>OOPU</td>
+        <td>CGAVM</td>
+        <td>Python</td>
+        <td>WT</td>
+        <td>OS</td>
+    </tr>
+
+    <tr>
+        <td><b>11:00 - 12:00</b></td>
+        <td>WT</td>
+        <td>OS</td>
+        <td>CGAVM</td>
+        <td>Python</td>
+        <td>OOPU</td>
+    </tr>
+
+    <!-- Lunch Break -->
+    <tr>
+        <td><b>12:00 - 1:00</b></td>
+
+        <td colspan="5" class="break">
+            Lunch Break
+        </td>
+    </tr>
+
+    <!-- 2 Hour Lab Session -->
+    <tr>
+        <td><b>1:00 - 2:00</b></td>
+
+        <td rowspan="2" class="lab">
+            Batch A<br>
+            Python Lab
+        </td>
+
+        <td rowspan="2" class="lab">
+            Batch B<br>
+            WT Lab
+        </td>
+
+        <td rowspan="2" class="lab">
+            CGAVM Lab
+        </td>
+
+        <td rowspan="2" class="lab">
+            Mini Project
+        </td>
+
+        <td rowspan="2" class="lab">
+            OS Lab
+        </td>
+    </tr>
+
+    <tr>
+        <td><b>2:00 - 3:00</b></td>
+    </tr>
+
+    <!-- Last Lecture -->
+    <tr>
+        <td><b>3:00 - 4:00</b></td>
+
+        <td>Library</td>
+        <td>Sports</td>
+        <td>Seminar</td>
+        <td>Mentoring</td>
+        <td>Activity</td>
+    </tr>
+
+</table>
+
+</body>
+</html>
