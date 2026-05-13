@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spider Hero Profile</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#0b0b0b;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:20px 60px;
+
+      background:rgba(0,0,0,0.6);
+      backdrop-filter:blur(10px);
+    }
+
+    nav h1{
+      color:#ff1e1e;
+      font-size:30px;
+      letter-spacing:2px;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-size:16px;
+    }
+
+    nav a:hover{
+      color:#ff1e1e;
+    }
+
+    /* HERO */
+
+    .hero{
+  height:100vh;
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  padding:0 10%;
+  transition:1s;
+}
+    .hero-content{
+      max-width:650px;
+    }
+
+    .hero h2{
+      font-size:100px;
+      color:red; 
+      line-height:1;
+      margin-bottom: 20px;
+      text-transform:uppercase;
+
+    }
+
+    .hero p{
+      color:#ddd;
+      line-height:1.8;
+      font-size:18px;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      padding:15px 35px;
+      background:#ff1e1e;
+      border:none;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+      border-radius:5px;
+    }
+
+    .btn:hover{
+      background:#ff4444;
+      transform:scale(1.05);
+    }
+
+    /* STATS */
+
+    .stats{
+      padding:100px 10%;
+      background:#111;
+
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:#1a1a1a;
+      padding:40px;
+      border-radius:15px;
+      text-align:center;
+
+      border:1px solid rgba(255,255,255,0.05);
+
+      transition:0.4s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      border-color:#ff1e1e;
+      box-shadow:0 0 25px rgba(255,0,0,0.3);
+    }
+
+    .card h3{
+      font-size:55px;
+      color:#ff1e1e;
+      margin-bottom:10px;
+    }
+
+    /* SECTION TITLE */
+
+    .section-title{
+      font-size:50px;
+      margin-bottom:50px;
+      text-transform:uppercase;
+    }
+
+    /* POWERS */
+
+    .powers{
+      padding:100px 10%;
+    }
+
+    .powers-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .power{
+      background:#181818;
+      padding:30px;
+      border-left:4px solid #ff1e1e;
+      transition:0.4s;
+      border-radius:10px;
+    }
+
+    .power:hover{
+      background:#222;
+      transform:scale(1.03);
+    }
+
+    .power h4{
+      color:#ff1e1e;
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    /* GALLERY */
+
+    .gallery{
+      padding:100px 10%;
+      background:#111;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .gallery-grid img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      border-radius:15px;
+      transition:0.4s;
+    }
+
+    .gallery-grid img:hover{
+      transform:scale(1.05);
+      box-shadow:0 0 25px rgba(255,0,0,0.4);
+    }
+
+    /* TIMELINE */
+
+    .timeline{
+      padding:100px 10%;
+    }
+
+    .timeline-item{
+      margin-bottom:40px;
+      padding-left:30px;
+      border-left:3px solid #ff1e1e;
+      position:relative;
+    }
+
+    .timeline-item::before{
+      content:'';
+      width:15px;
+      height:15px;
+      background:#ff1e1e;
+      border-radius:50%;
+
+      position:absolute;
+      left:-9px;
+      top:0;
+    }
+
+    .timeline-item h4{
+      color:#ff1e1e;
+      margin-bottom:10px;
+      font-size:22px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:black;
+      padding:40px;
+      text-align:center;
+      color:#777;
+    }
+
+    /* SCROLL ANIMATION */
+
+    .fade-in{
+      opacity:0;
+      transform:translateY(50px);
+      transition:1s;
+    }
+
+    .fade-in.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      nav{
+        padding:20px;
+      }
+
+      nav ul{
+        display:none;
+      }
+
+      .hero h2{
+        font-size:50px;
+      }
+
+      .section-title{
+        font-size:35px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <h1>SPIDER-MAN</h1>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#powers">Powers</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#story">Story</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content fade-in">
+
+              
+      <h2 style="color: white;">THE AMAZING SPIDER-MAN</h2>
+
+      <p>
+        A legendary superhero protecting New York City with incredible agility,
+        intelligence, spider-sense, and superhuman strength.
+      </p>
+
+      <button class="btn">Explore Hero</button>
+
+    </div>
+
+  </section>
+
+  <!-- STATS -->
+
+  <section class="stats">
+
+    <div class="card fade-in">
+      <h3>98%</h3>
+      <p>Agility</p>
+    </div>
+
+    <div class="card fade-in">
+      <h3>95%</h3>
+      <p>Strength</p>
+    </div>
+
+    <div class="card fade-in">
+      <h3>100%</h3>
+      <p>Spider Sense</p>
+    </div>
+
+    <div class="card fade-in">
+      <h3>99%</h3>
+      <p>Reflexes</p>
+    </div>
+
+  </section>
+
+  <!-- POWERS -->
+
+  <section class="powers" id="powers">
+
+    <h2 class="section-title fade-in">Abilities</h2>
+
+    <div class="powers-grid">
+
+      <div class="power fade-in">
+        <h4>Wall Climbing</h4>
+        <p>Scale walls and buildings effortlessly.</p>
+      </div>
+
+      <div class="power fade-in">
+        <h4>Spider Sense</h4>
+        <p>Detect danger before it happens.</p>
+      </div>
+
+      <div class="power fade-in">
+        <h4>Super Strength</h4>
+        <p>Lift heavy objects and overpower enemies.</p>
+      </div>
+
+      <div class="power fade-in">
+        <h4>Web Shooters</h4>
+        <p>Travel quickly using advanced web technology.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GALLERY -->
+
+  <section class="gallery" id="gallery">
+
+    <h2 class="section-title fade-in">Gallery</h2>
+
+    <div class="gallery-grid">
+
+      <img class="fade-in" src="spider-man-bg-img.jpg" alt="">
+      <img class="fade-in" src="smanime.jpg" alt="">
+      <img class="fade-in" src="spider-man-bg-img.jpg" alt="">
+      <img class="fade-in" src="spidermanbrandnewday_online_1080x1350_reflection_04.jpg" alt="">
+      <img class="fade-in" src="smonsc.jpg" alt="">
+      <img class="fade-in" src="smcomic.jpg" alt="">
+
+    </div>
+
+  </section>
+
+  <!-- TIMELINE -->
+
+  <section class="timeline" id="story">
+
+    <h2 class="section-title fade-in">Origin Story</h2>
+
+    <div class="timeline-item fade-in">
+      <h4>2008</h4>
+      <p>Bitten by a genetically modified spider during a science experiment.</p>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <h4>2010</h4>
+      <p>Began protecting New York City from dangerous criminals.</p>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <h4>2015</h4>
+      <p>Joined forces with other heroes to save the world.</p>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    Spider Hero Inspired Website Design
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    /* HERO BACKGROUND SLIDER */
+
+    const hero = document.querySelector(".hero");
+
+    const images = [
+
+      "smcomic.jpg",
+      "SPIDER-manBN.jpg",
+      "SPIDER-manBN.jpg",
+      "spider-man-bg-img.jpg",
+      "spidermanbrandnewday_online_1080x1350_reflection_04.jpg",
+      "smhomcming.jpg",
+      "smanime.jpg"
+
+    ];
+
+    let index = 0;
+
+    function changeBackground(){
+
+      hero.style.background =
+      `
+      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+      url('${images[index]}')
+      center/cover no-repeat
+      `;
+
+      index++;
+
+      if(index >= images.length){
+        index = 0;
+      }
+    }
+
+    setInterval(changeBackground, 3000);
+
+    changeBackground();
+
+    /* SCROLL ANIMATION */
+
+    const observer = new IntersectionObserver(entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+        }
+
+      });
+
+    });
+
+    document.querySelectorAll(".fade-in").forEach(el => {
+      observer.observe(el);
+    });
+
+  </script>
+
+</body>
+</html>
