@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Spider Register</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:
+  linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+  url('images/SPIDER-manBN.jpg');
+
+  background-size:cover;
+  background-position:center;
+}
+
+.container{
+  width:420px;
+
+  background:rgba(0,0,0,0.75);
+
+  padding:40px;
+
+  border-radius:20px;
+
+  border:2px solid #ff1e1e;
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:
+  0 0 20px rgba(255,0,0,0.5),
+  0 0 50px rgba(255,0,0,0.3);
+
+  animation:zoomIn 1s ease;
+}
+
+@keyframes zoomIn{
+
+  from{
+    transform:scale(0.7);
+    opacity:0;
+  }
+
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+.logo{
+  text-align:center;
+  font-size:70px;
+  margin-bottom:10px;
+}
+
+h2{
+  text-align:center;
+  color:#ff1e1e;
+  margin-bottom:30px;
+  font-size:35px;
+}
+
+.input-box{
+  margin-bottom:20px;
+}
+
+.input-box input{
+  width:100%;
+  padding:15px;
+
+  border:none;
+  outline:none;
+
+  border-radius:10px;
+
+  background:#111;
+  color:white;
+
+  border:1px solid #333;
+
+  transition:0.4s;
+}
+
+.input-box input:focus{
+  border-color:#ff1e1e;
+
+  box-shadow:
+  0 0 15px rgba(255,0,0,0.5);
+}
+
+.btn{
+  width:100%;
+  padding:15px;
+
+  border:none;
+  border-radius:10px;
+
+  background:#ff1e1e;
+  color:white;
+
+  font-size:18px;
+
+  cursor:pointer;
+
+  transition:0.4s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+
+  background:#ff4444;
+
+  box-shadow:
+  0 0 20px red;
+}
+
+.links{
+  text-align:center;
+  margin-top:20px;
+  color:#aaa;
+}
+
+.links a{
+  color:#ff1e1e;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.home-btn{
+  position:absolute;
+  top:30px;
+  left:30px;
+
+  padding:12px 25px;
+
+  background:#ff1e1e;
+  color:white;
+
+  border-radius:30px;
+
+  text-decoration:none;
+
+  transition:0.4s;
+}
+
+.home-btn:hover{
+  background:white;
+  color:#ff1e1e;
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="home-btn">
+← Home
+</a>
+
+<div class="container">
+
+<div class="logo">
+🕸️
+</div>
+
+<h2>Create Spider ID</h2>
+
+<form>
+
+<div class="input-box">
+<input type="text" placeholder="Full Name" required>
+</div>
+
+<div class="input-box">
+<input type="email" placeholder="Email Address" required>
+</div>
+
+<div class="input-box">
+<input type="password" placeholder="Create Password" required>
+</div>
+
+<div class="input-box">
+<input type="password" placeholder="Confirm Password" required>
+</div>
+
+<button class="btn">
+Register
+</button>
+
+</form>
+
+<div class="links">
+Already have account?
+<a href="login.html">
+Login
+</a>
+</div>
+
+</div>
+
+</body>
+</html>

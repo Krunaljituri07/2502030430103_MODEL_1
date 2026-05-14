@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Spider Login</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:
+  linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+  url('images/spider-man-bg-img.jpg');
+
+  background-size:cover;
+  background-position:center;
+  overflow:hidden;
+}
+
+/* WEB EFFECT */
+
+body::before{
+  content:'';
+
+  position:absolute;
+  width:100%;
+  height:100%;
+
+  background:
+  repeating-radial-gradient(
+  circle at center,
+  transparent 0px,
+  transparent 25px,
+  rgba(255,255,255,0.04) 26px
+  );
+
+  animation:webMove 8s linear infinite;
+}
+
+@keyframes webMove{
+
+  0%{
+    transform:scale(1) rotate(0deg);
+  }
+
+  100%{
+    transform:scale(1.1) rotate(5deg);
+  }
+}
+
+.container{
+  width:400px;
+
+  background:rgba(0,0,0,0.75);
+
+  padding:40px;
+
+  border-radius:20px;
+
+  border:2px solid #ff1e1e;
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:
+  0 0 20px rgba(255,0,0,0.5),
+  0 0 50px rgba(255,0,0,0.3);
+
+  position:relative;
+  z-index:10;
+
+  animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(50px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.logo{
+  text-align:center;
+  font-size:70px;
+  margin-bottom:10px;
+
+  animation:swing 2s infinite ease-in-out;
+}
+
+@keyframes swing{
+
+  0%{
+    transform:rotate(-5deg);
+  }
+
+  50%{
+    transform:rotate(5deg);
+  }
+
+  100%{
+    transform:rotate(-5deg);
+  }
+}
+
+h2{
+  text-align:center;
+  margin-bottom:30px;
+  color:#ff1e1e;
+  font-size:35px;
+}
+
+.input-box{
+  margin-bottom:20px;
+}
+
+.input-box input{
+  width:100%;
+  padding:15px;
+
+  border:none;
+  outline:none;
+
+  border-radius:10px;
+
+  background:#111;
+  color:white;
+
+  border:1px solid #333;
+
+  transition:0.4s;
+}
+
+.input-box input:focus{
+  border-color:#ff1e1e;
+
+  box-shadow:
+  0 0 15px rgba(255,0,0,0.5);
+}
+
+.btn{
+  width:100%;
+  padding:15px;
+
+  border:none;
+  border-radius:10px;
+
+  background:#ff1e1e;
+  color:white;
+
+  font-size:18px;
+
+  cursor:pointer;
+
+  transition:0.4s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+
+  background:#ff4444;
+
+  box-shadow:
+  0 0 20px red;
+}
+
+.links{
+  text-align:center;
+  margin-top:20px;
+  color:#aaa;
+}
+
+.links a{
+  color:#ff1e1e;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.links a:hover{
+  text-decoration:underline;
+}
+
+.home-btn{
+  position:absolute;
+  top:30px;
+  left:30px;
+
+  padding:12px 25px;
+
+  background:#ff1e1e;
+  color:white;
+
+  border-radius:30px;
+
+  text-decoration:none;
+
+  transition:0.4s;
+}
+
+.home-btn:hover{
+  background:white;
+  color:#ff1e1e;
+
+  box-shadow:0 0 20px red;
+}
+
+</style>
+</head>
+
+<body>
+
+
+
+<div class="container">
+
+<div class="logo">
+🕷️
+</div>
+
+<h2>Spider Login</h2>
+
+<form>
+
+<div class="input-box">
+<input type="email" placeholder="Enter Email" required>
+</div>
+
+<div class="input-box">
+<input type="password" placeholder="Enter Password" required>
+</div>
+
+<button class="btn">
+Login
+</button>
+
+</form>
+
+<div class="links">
+Don't have account?
+<a href="register.html">
+Create Spider ID
+</a>
+</div>
+
+</div>
+
+</body>
+</html>
