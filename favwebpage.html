@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Spider Hero Profile</title>
 
   <style>
@@ -14,144 +17,363 @@
       font-family:Arial, Helvetica, sans-serif;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       background:#0b0b0b;
       color:white;
       overflow-x:hidden;
     }
 
-    html{
-      scroll-behavior:smooth;
+    /* SCROLLBAR */
+
+    ::-webkit-scrollbar{
+      width:10px;
+    }
+
+    ::-webkit-scrollbar-track{
+      background:#111;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:#ff1e1e;
+      border-radius:10px;
     }
 
     /* NAVBAR */
 
     nav{
+
       position:fixed;
+
       top:0;
       left:0;
+
       width:100%;
+
       z-index:1000;
 
       display:flex;
+
       justify-content:space-between;
+
       align-items:center;
 
       padding:20px 60px;
 
       background:rgba(0,0,0,0.6);
+
       backdrop-filter:blur(10px);
+
+      border-bottom:1px solid rgba(255,255,255,0.05);
     }
 
     nav h1{
+
       color:#ff1e1e;
-      font-size:30px;
-      letter-spacing:2px;
+
+      font-size:32px;
+
+      letter-spacing:3px;
+
+      text-shadow:
+      0 0 10px red,
+      0 0 20px rgba(255,0,0,0.5);
     }
 
     nav ul{
+
       display:flex;
-      gap:30px;
+
+      align-items:center;
+
+      gap:25px;
+
       list-style:none;
     }
 
     nav a{
+
       color:white;
+
       text-decoration:none;
-      transition:0.3s;
+
+      transition:0.4s;
+
       font-size:16px;
+
+      position:relative;
     }
 
     nav a:hover{
       color:#ff1e1e;
     }
 
+    nav a::after{
+
+      content:'';
+
+      position:absolute;
+
+      left:0;
+      bottom:-6px;
+
+      width:0%;
+      height:2px;
+
+      background:#ff1e1e;
+
+      transition:0.4s;
+    }
+
+    nav a:hover::after{
+      width:100%;
+    }
+
+    /* LOGIN REGISTER BUTTONS */
+
+    .nav-btn{
+
+      padding:12px 24px;
+
+      border-radius:40px;
+
+      font-weight:bold;
+
+      letter-spacing:1px;
+
+      text-transform:uppercase;
+
+      transition:0.5s;
+
+      overflow:hidden;
+
+      position:relative;
+    }
+
+    .login-btn{
+
+      background:
+      linear-gradient(45deg,#ff1e1e,#990000);
+
+      box-shadow:
+      0 0 10px rgba(255,0,0,0.5),
+      0 0 25px rgba(255,0,0,0.3);
+    }
+
+    .register-btn{
+
+      background:
+      linear-gradient(45deg,#0066ff,#00ccff);
+
+      box-shadow:
+      0 0 10px rgba(0,100,255,0.5),
+      0 0 25px rgba(0,100,255,0.3);
+    }
+
+    .nav-btn:hover{
+
+      transform:
+      translateY(-5px)
+      scale(1.05);
+
+      background:white;
+    }
+
+    .login-btn:hover{
+      color:#ff1e1e;
+    }
+
+    .register-btn:hover{
+      color:#0077ff;
+    }
+
+    .nav-btn::before{
+
+      content:'';
+
+      position:absolute;
+
+      top:0;
+      left:-100%;
+
+      width:100%;
+      height:100%;
+
+      background:
+      linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.5),
+      transparent
+      );
+
+      transition:0.7s;
+    }
+
+    .nav-btn:hover::before{
+      left:100%;
+    }
+
     /* HERO */
 
     .hero{
-  height:100vh;
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:center;
-  padding:0 10%;
-  transition:1s;
-}
+
+      height:100vh;
+
+      background-size:cover;
+
+      background-position:center;
+
+      display:flex;
+
+      align-items:center;
+
+      padding:0 10%;
+
+      transition:1s;
+
+      position:relative;
+    }
+
+    .hero::before{
+
+      content:'';
+
+      position:absolute;
+
+      inset:0;
+
+      background:
+      linear-gradient(rgba(0,0,0,0.5),
+      rgba(0,0,0,0.7));
+    }
+
     .hero-content{
+
       max-width:650px;
+
+      position:relative;
+
+      z-index:2;
     }
 
     .hero h2{
-      font-size:100px;
-      color:red; 
+
+      font-size:90px;
+
       line-height:1;
-      margin-bottom: 20px;
+
+      margin-bottom:20px;
+
       text-transform:uppercase;
 
+      color:white;
     }
 
     .hero p{
+
       color:#ddd;
+
       line-height:1.8;
+
       font-size:18px;
+
       margin-bottom:30px;
     }
 
+    /* BUTTON */
+
     .btn{
+
       padding:15px 35px;
+
       background:#ff1e1e;
+
       border:none;
+
       color:white;
+
       font-size:16px;
+
       cursor:pointer;
-      transition:0.3s;
+
+      transition:0.4s;
+
       border-radius:5px;
     }
 
     .btn:hover{
+
       background:#ff4444;
+
       transform:scale(1.05);
+
+      box-shadow:
+      0 0 20px red;
     }
 
     /* STATS */
 
     .stats{
+
       padding:100px 10%;
+
       background:#111;
 
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(220px,1fr));
+
       gap:25px;
     }
 
     .card{
+
       background:#1a1a1a;
+
       padding:40px;
+
       border-radius:15px;
+
       text-align:center;
 
       border:1px solid rgba(255,255,255,0.05);
 
-      transition:0.4s;
+      transition:0.5s;
     }
 
     .card:hover{
-      transform:translateY(-10px);
+
+      transform:
+      translateY(-10px);
+
       border-color:#ff1e1e;
-      box-shadow:0 0 25px rgba(255,0,0,0.3);
+
+      box-shadow:
+      0 0 25px rgba(255,0,0,0.3);
     }
 
     .card h3{
+
       font-size:55px;
+
       color:#ff1e1e;
+
       margin-bottom:10px;
     }
 
     /* SECTION TITLE */
 
     .section-title{
+
       font-size:50px;
+
       margin-bottom:50px;
+
       text-transform:uppercase;
     }
 
@@ -162,54 +384,85 @@
     }
 
     .powers-grid{
+
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(250px,1fr));
+
       gap:25px;
     }
 
     .power{
+
       background:#181818;
+
       padding:30px;
+
       border-left:4px solid #ff1e1e;
+
       transition:0.4s;
+
       border-radius:10px;
     }
 
     .power:hover{
+
       background:#222;
+
       transform:scale(1.03);
+
+      box-shadow:
+      0 0 20px rgba(255,0,0,0.3);
     }
 
     .power h4{
+
       color:#ff1e1e;
+
       margin-bottom:15px;
+
       font-size:24px;
     }
 
     /* GALLERY */
 
     .gallery{
+
       padding:100px 10%;
+
       background:#111;
     }
 
     .gallery-grid{
+
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(250px,1fr));
+
       gap:20px;
     }
 
     .gallery-grid img{
+
       width:100%;
+
       height:320px;
+
       object-fit:cover;
+
       border-radius:15px;
-      transition:0.4s;
+
+      transition:0.5s;
     }
 
     .gallery-grid img:hover{
+
       transform:scale(1.05);
-      box-shadow:0 0 25px rgba(255,0,0,0.4);
+
+      box-shadow:
+      0 0 25px rgba(255,0,0,0.5);
     }
 
     /* TIMELINE */
@@ -219,49 +472,70 @@
     }
 
     .timeline-item{
+
       margin-bottom:40px;
+
       padding-left:30px;
+
       border-left:3px solid #ff1e1e;
+
       position:relative;
     }
 
     .timeline-item::before{
+
       content:'';
+
       width:15px;
       height:15px;
+
       background:#ff1e1e;
+
       border-radius:50%;
 
       position:absolute;
+
       left:-9px;
       top:0;
     }
 
     .timeline-item h4{
+
       color:#ff1e1e;
+
       margin-bottom:10px;
+
       font-size:22px;
     }
 
     /* FOOTER */
 
     footer{
+
       background:black;
+
       padding:40px;
+
       text-align:center;
+
       color:#777;
     }
 
-    /* SCROLL ANIMATION */
+    /* FADE ANIMATION */
 
     .fade-in{
+
       opacity:0;
+
       transform:translateY(50px);
+
       transition:1s;
     }
 
     .fade-in.show{
+
       opacity:1;
+
       transform:translateY(0);
     }
 
@@ -274,7 +548,8 @@
       }
 
       nav ul{
-        display:none;
+        gap:12px;
+        flex-wrap:wrap;
       }
 
       .hero h2{
@@ -284,10 +559,17 @@
       .section-title{
         font-size:35px;
       }
+
+      .nav-btn{
+        padding:10px 18px;
+        font-size:14px;
+      }
     }
 
   </style>
+
 </head>
+
 <body>
 
   <!-- NAVBAR -->
@@ -297,10 +579,27 @@
     <h1>SPIDER-MAN</h1>
 
     <ul>
+
       <li><a href="#home">Home</a></li>
+
       <li><a href="#powers">Powers</a></li>
+
       <li><a href="#gallery">Gallery</a></li>
+
       <li><a href="#story">Story</a></li>
+
+      <li>
+        <a href="login.html" class="nav-btn login-btn">
+          Login
+        </a>
+      </li>
+
+      <li>
+        <a href="register.html" class="nav-btn register-btn">
+          Sign Up
+        </a>
+      </li>
+
     </ul>
 
   </nav>
@@ -311,15 +610,16 @@
 
     <div class="hero-content fade-in">
 
-              
-      <h2 style="color: white;">THE AMAZING SPIDER-MAN</h2>
+      <h2>THE AMAZING SPIDER-MAN</h2>
 
       <p>
         A legendary superhero protecting New York City with incredible agility,
         intelligence, spider-sense, and superhuman strength.
       </p>
 
-      <button class="btn">Explore Hero</button>
+      <button class="btn">
+        Explore Hero
+      </button>
 
     </div>
 
@@ -355,7 +655,9 @@
 
   <section class="powers" id="powers">
 
-    <h2 class="section-title fade-in">Abilities</h2>
+    <h2 class="section-title fade-in">
+      Abilities
+    </h2>
 
     <div class="powers-grid">
 
@@ -387,16 +689,23 @@
 
   <section class="gallery" id="gallery">
 
-    <h2 class="section-title fade-in">Gallery</h2>
+    <h2 class="section-title fade-in">
+      Gallery
+    </h2>
 
     <div class="gallery-grid">
 
-      <img class="fade-in" src="spider-man-bg-img.jpg" alt="">
-      <img class="fade-in" src="smanime.jpg" alt="">
-      <img class="fade-in" src="spider-man-bg-img.jpg" alt="">
-      <img class="fade-in" src="spidermanbrandnewday_online_1080x1350_reflection_04.jpg" alt="">
-      <img class="fade-in" src="smonsc.jpg" alt="">
-      <img class="fade-in" src="smcomic.jpg" alt="">
+      <img class="fade-in" src="images/spider-man-bg-img.jpg" alt="">
+
+      <img class="fade-in" src="images/smanime.jpg" alt="">
+
+      <img class="fade-in" src="images/smtony.jpg" alt="">
+
+      <img class="fade-in" src="images/SPIDER-manBN.jpg" alt="">
+
+      <img class="fade-in" src="images/smtony.jpg" alt="">
+
+      <img class="fade-in" src="images/smonsc.jpg" alt="">
 
     </div>
 
@@ -406,21 +715,38 @@
 
   <section class="timeline" id="story">
 
-    <h2 class="section-title fade-in">Origin Story</h2>
+    <h2 class="section-title fade-in">
+      Origin Story
+    </h2>
 
     <div class="timeline-item fade-in">
+
       <h4>2008</h4>
-      <p>Bitten by a genetically modified spider during a science experiment.</p>
+
+      <p>
+        Bitten by a genetically modified spider during a science experiment.
+      </p>
+
     </div>
 
     <div class="timeline-item fade-in">
+
       <h4>2010</h4>
-      <p>Began protecting New York City from dangerous criminals.</p>
+
+      <p>
+        Began protecting New York City from dangerous criminals.
+      </p>
+
     </div>
 
     <div class="timeline-item fade-in">
+
       <h4>2015</h4>
-      <p>Joined forces with other heroes to save the world.</p>
+
+      <p>
+        Joined forces with other heroes to save the world.
+      </p>
+
     </div>
 
   </section>
@@ -435,19 +761,17 @@
 
   <script>
 
-    /* HERO BACKGROUND SLIDER */
-
     const hero = document.querySelector(".hero");
 
     const images = [
 
-      "smcomic.jpg",
-      "SPIDER-manBN.jpg",
-      "SPIDER-manBN.jpg",
-      "spider-man-bg-img.jpg",
-      "spidermanbrandnewday_online_1080x1350_reflection_04.jpg",
-      "smhomcming.jpg",
-      "smanime.jpg"
+      "images/smcomic.jpg",
+      "images/smanime.jpg",
+      "images/smhomcming.jpg",
+      "images/smonsc.jpg",
+      "images/spider-man-bg-img.jpg",
+      "images/spidermanbrandnewday_online_1080x1350_reflection_04.jpg",
+      "images/SPIDER-manBN.jpg"
 
     ];
 
@@ -456,6 +780,7 @@
     function changeBackground(){
 
       hero.style.background =
+
       `
       linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
       url('${images[index]}')
@@ -469,7 +794,7 @@
       }
     }
 
-    setInterval(changeBackground, 3000);
+    setInterval(changeBackground,3000);
 
     changeBackground();
 
@@ -494,4 +819,5 @@
   </script>
 
 </body>
+
 </html>
