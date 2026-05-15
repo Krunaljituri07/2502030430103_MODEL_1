@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head as index.html -->
+    <title>Shopping Cart - AutoLux</title>
+</head>
+<body>
+    <!-- Same navbar -->
+    
+    <section class="cart-hero">
+        <div class="container">
+            <h1>Your Shopping Cart</h1>
+        </div>
+    </section>
+
+    <section class="cart-section" id="cart-page">
+        <div class="container">
+            <div id="cart-items-list">
+                <!-- Cart items loaded by JS -->
+            </div>
+            <div class="cart-total">
+                <h3>Total: $<span id="cart-total">0</span></h3>
+                <button class="btn-checkout">Proceed to Checkout</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Same footer -->
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function loadCartPage() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const $cartList = $('#cart-items-list');
+            let total = 0;
+
+            if (cart.length === 0) {
+                $cartList.html('<p>Your cart is empty. <a href="index.html">Continue shopping</a></p>');
+                return;
+            }
+
+            $cartList.empty();
+            cart.forEach((car, index) => {
+                const priceNum = parseFloat(car.price.replace(/[$,]/g, ''));
+                total += priceNum;
+                
+                $cartList.append(`
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-icon">${car.icon}</div>
+                            <div>
+                                <h4>${car.name}</h4>
+                                <p>${car.price}</p>
+                            </div>
+                        </div>
+                        <div class="cart-item-actions">
+                            <button onclick="removeFromCart(${index})">Remove</button>
+                        </div>
+                    </div>
+                `);
+            });
+
+            $('#cart-total').text(total.toLocaleString());
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            $('#cart-items').text(cart.length);
+            loadCartPage();
+        }
+    </script>
+</body>
+</html>
