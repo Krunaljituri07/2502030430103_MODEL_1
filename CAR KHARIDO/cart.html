@@ -1,76 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- Same head as index.html -->
-    <title>Shopping Cart - AutoLux</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Cart - AutoLux
+    </title>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FONT AWESOME -->
+
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet">
+
 </head>
+
 <body>
-    <!-- Same navbar -->
-    
-    <section class="cart-hero">
-        <div class="container">
-            <h1>Your Shopping Cart</h1>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <div class="nav-logo">
+            <a href="index.html">
+                AutoLux
+            </a>
         </div>
-    </section>
 
-    <section class="cart-section" id="cart-page">
-        <div class="container">
-            <div id="cart-items-list">
-                <!-- Cart items loaded by JS -->
-            </div>
-            <div class="cart-total">
-                <h3>Total: $<span id="cart-total">0</span></h3>
-                <button class="btn-checkout">Proceed to Checkout</button>
-            </div>
+        <ul class="nav-menu">
+
+            <li>
+                <a href="index.html"
+                class="nav-link">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="cars.html"
+                class="nav-link">
+                    Cars
+                </a>
+            </li>
+
+            <li>
+                <a href="quiz.html"
+                class="nav-link">
+                    Quiz
+                </a>
+            </li>
+
+            <li>
+                <a href="services.html"
+                class="nav-link">
+                    Services
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html"
+                class="nav-link">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html"
+                class="nav-link active">
+
+                    <i class="fas fa-shopping-cart"></i>
+
+                    Cart
+                    (<span id="cart-items">0</span>)
+
+                </a>
+            </li>
+
+        </ul>
+
+        <div class="nav-auth">
+
+            <a href="login.html"
+            class="btn-login">
+                Login
+            </a>
+
+            <a href="register.html"
+            class="btn-register">
+                Register
+            </a>
+
         </div>
-    </section>
 
-    <!-- Same footer -->
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="script.js"></script>
-    <script>
-        function loadCartPage() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const $cartList = $('#cart-items-list');
-            let total = 0;
+        <div class="hamburger">
 
-            if (cart.length === 0) {
-                $cartList.html('<p>Your cart is empty. <a href="index.html">Continue shopping</a></p>');
-                return;
-            }
+            <span></span>
+            <span></span>
+            <span></span>
 
-            $cartList.empty();
-            cart.forEach((car, index) => {
-                const priceNum = parseFloat(car.price.replace(/[$,]/g, ''));
-                total += priceNum;
-                
-                $cartList.append(`
-                    <div class="cart-item">
-                        <div class="cart-item-info">
-                            <div class="cart-item-icon">${car.icon}</div>
-                            <div>
-                                <h4>${car.name}</h4>
-                                <p>${car.price}</p>
-                            </div>
-                        </div>
-                        <div class="cart-item-actions">
-                            <button onclick="removeFromCart(${index})">Remove</button>
-                        </div>
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="about-hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Your Dream Garage
+        </h1>
+
+        <p>
+            Manage your luxury car collection.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= CART ================= -->
+
+<section class="cars-section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Shopping Cart
+        </h2>
+
+        <div id="cart-items-list">
+
+        </div>
+
+        <div class="cart-total-box">
+
+            <h2>
+                Total :
+                ₹<span id="cart-total">0</span>
+            </h2>
+
+            <button class="btn-primary btn-checkout">
+
+                Proceed To Checkout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div class="footer-section">
+
+                <h3>
+                    AutoLux
+                </h3>
+
+                <p>
+                    Premium luxury car marketplace.
+                </p>
+
+            </div>
+
+            <div class="footer-section">
+
+                <h4>
+                    Quick Links
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cars.html">
+                            Cars
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="quiz.html">
+                            Quiz
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 AutoLux.
+                All Rights Reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ================= JQUERY ================= -->
+
+<script
+src="https://code.jquery.com/jquery-3.7.1.min.js">
+</script>
+
+<!-- ================= SCRIPT ================= -->
+
+<script src="script.js"></script>
+
+<!-- ================= CART JS ================= -->
+
+<script>
+
+$(document).ready(function(){
+
+    loadCartPage();
+
+});
+
+/* ================= LOAD CART ================= */
+
+function loadCartPage(){
+
+    let cart =
+    JSON.parse(localStorage.getItem('cart'))
+    || [];
+
+    let $cartList =
+    $('#cart-items-list');
+
+    let total = 0;
+
+    $('#cart-items').text(cart.length);
+
+    if(cart.length === 0){
+
+        $cartList.html(`
+
+            <div class="empty-cart">
+
+                <h2>
+                    🛒 Your Cart Is Empty
+                </h2>
+
+                <p>
+                    Start adding dream cars.
+                </p>
+
+                <br>
+
+                <a href="index.html"
+                class="btn-primary">
+
+                    Continue Shopping
+
+                </a>
+
+            </div>
+
+        `);
+
+        $('#cart-total').text(0);
+
+        return;
+
+    }
+
+    $cartList.empty();
+
+    cart.forEach(function(car,index){
+
+        let priceNum =
+        parseFloat(
+            car.price.replace(/[₹,Cr]/g,'')
+        );
+
+        total += priceNum;
+
+        $cartList.append(`
+
+            <div class="cart-item">
+
+                <div class="cart-left">
+
+                    <img src="${car.image}"
+                    alt="${car.name}">
+
+                </div>
+
+                <div class="cart-right">
+
+                    <h3>
+                        ${car.name}
+                    </h3>
+
+                    <p>
+                        Premium luxury performance car.
+                    </p>
+
+                    <div class="cart-price">
+                        ${car.price}
                     </div>
-                `);
-            });
 
-            $('#cart-total').text(total.toLocaleString());
-        }
+                    <button
+                    class="btn-wishlist"
+                    onclick="removeFromCart(${index})">
 
-        function removeFromCart(index) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            $('#cart-items').text(cart.length);
-            loadCartPage();
-        }
-    </script>
+                        Remove
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `);
+
+    });
+
+    $('#cart-total').text(
+        total.toLocaleString()
+    );
+
+}
+
+/* ================= REMOVE ================= */
+
+function removeFromCart(index){
+
+    let cart =
+    JSON.parse(localStorage.getItem('cart'))
+    || [];
+
+    cart.splice(index,1);
+
+    localStorage.setItem(
+        'cart',
+        JSON.stringify(cart)
+    );
+
+    loadCartPage();
+
+}
+
+/* ================= CHECKOUT ================= */
+
+$('.btn-checkout').click(function(){
+
+    alert(
+        '🚗 Checkout feature coming soon!'
+    );
+
+});
+
+</script>
+
 </body>
 </html>

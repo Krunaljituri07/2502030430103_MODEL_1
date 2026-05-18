@@ -1,72 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - AutoLux</title>
+
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Register - AutoLux
+    </title>
+
+    <!-- CSS -->
+
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet">
+
 </head>
+
 <body>
-    <!-- Same navigation as login.html -->
 
-    <!-- Register Section -->
-    <section class="auth-section">
-        <div class="container">
-            <div class="auth-container">
-                <div class="auth-card">
-                    <div class="auth-header">
-                        <h2><i class="fas fa-user-plus"></i> Create Account</h2>
-                        <p>Join us and discover premium cars</p>
-                    </div>
-                    
-                    <form id="registerForm" class="auth-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label><i class="fas fa-user"></i> First Name</label>
-                                <input type="text" id="firstName" required>
-                            </div>
-                            <div class="form-group">
-                                <label><i class="fas fa-user"></i> Last Name</label>
-                                <input type="text" id="lastName" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-phone"></i> Phone</label>
-                            <input type="tel" id="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" id="registerEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-lock"></i> Password</label>
-                            <input type="password" id="registerPassword" required minlength="6">
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-lock"></i> Confirm Password</label>
-                            <input type="password" id="confirmPassword" required>
-                        </div>
-                        <div class="form-options">
-                            <label class="checkbox">
-                                <input type="checkbox" id="terms" required>
-                                I agree to Terms & Conditions
-                            </label>
-                        </div>
-                        <button type="submit" class="btn-primary full-width">Create Account</button>
-                    </form>
+<!-- ================= NAVBAR ================= -->
 
-                    <div class="auth-footer">
-                        <p>Already have an account? <a href="login.html">Login here</a></p>
-                    </div>
-                </div>
-            </div>
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <div class="nav-logo">
+
+            <a href="index.html">
+                AutoLux
+            </a>
+
         </div>
-    </section>
 
-    <!-- Same footer -->
+        <ul class="nav-menu">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="auth.js"></script>
+            <li>
+                <a href="index.html"
+                class="nav-link">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="cars.html"
+                class="nav-link">
+                    Cars
+                </a>
+            </li>
+
+            <li>
+                <a href="quiz.html"
+                class="nav-link">
+                    Quiz
+                </a>
+            </li>
+
+            <li>
+                <a href="services.html"
+                class="nav-link">
+                    Services
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html"
+                class="nav-link">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html"
+                class="nav-link">
+                    Contact
+                </a>
+            </li>
+
+            <li>
+
+                <a href="cart.html"
+                class="nav-link"
+                id="cart-count">
+
+                    <i class="fas fa-shopping-cart"></i>
+
+                    Cart
+                    (<span id="cart-items">0</span>)
+
+                </a>
+
+            </li>
+
+        </ul>
+
+        <div class="nav-auth">
+
+            <a href="login.html"
+            class="btn-login">
+
+                Login
+
+            </a>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+
+        <div class="hamburger">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- ================= REGISTER SECTION ================= -->
+
+<section class="auth-section">
+
+    <div class="container">
+
+        <div class="auth-container">
+
+            <div class="auth-card">
+
+                <!-- HEADER -->
+
+                <div class="auth-header">
+
+                    <h2>
+
+                        <i class="fas fa-user-plus"></i>
+
+                        Create Account
+
+                    </h2>
+
+                    <p>
+
+                        Join AutoLux and
+                        discover futuristic luxury cars.
+
+                    </p>
+
+                </div>
+
+                <!-- FORM -->
+
+                <form
+                id="registerForm"
+                class="auth-form">
+
+                    <!-- NAME ROW -->
+
+                    <div class="form-row">
+
+                        <!-- FIRST NAME -->
+
+                        <div class="form-group">
+
+                            <label>
+
+                                <i class="fas fa-user"></i>
+
+                                First Name
+
+                            </label>
+
+                            <input
+                            type="text"
+                            id="firstName"
+                            placeholder="First name"
+                            required>
+
+                            <small
+                            class="error"
+                            id="firstNameError">
+
+                            </small>
+
+                        </div>
+
+                        <!-- LAST NAME -->
+
+                        <div class="form-group">
+
+                            <label>
+
+                                <i class="fas fa-user"></i>
+
+                                Last Name
+
+                            </label>
+
+                            <input
+                            type="text"
+                            id="lastName"
+                            placeholder="Last name"
+                            required>
+
+                            <small
+                            class="error"
+                            id="lastNameError">
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label>
+
+                            <i class="fas fa-phone"></i>
+
+                            Phone Number
+
+                        </label>
+
+                        <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter phone number"
+                        required>
+
+                        <small
+                        class="error"
+                        id="phoneError">
+
+                        </small>
+
+                    </div>
+
+                    <!-- DATE OF BIRTH -->
+
+                    <div class="form-group">
+
+                        <label>
+
+                            <i class="fas fa-calendar"></i>
+
+                            Date Of Birth
+
+                        </label>
+
+                        <input
+                        type="date"
+                        id="dob"
+                        required>
+
+                        <small
+                        class="error"
+                        id="dobError">
+
+                        </small>
+
+                    </div>
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label>
+
+                            <i class="fas fa-envelope"></i>
+
+                            Email
+
+                        </label>
+
+                        <input
+                        type="email"
+                        id="registerEmail"
+                        placeholder="Enter email"
+                        required>
+
+                    </div>
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label>
+
+                            <i class="fas fa-lock"></i>
+
+                            Password
+
+                        </label>
+
+                        <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="Capital, number & special character"
+                        required>
+
+                        <small
+                        class="error"
+                        id="registerPasswordError">
+
+                        </small>
+
+                    </div>
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label>
+
+                            <i class="fas fa-lock"></i>
+
+                            Confirm Password
+
+                        </label>
+
+                        <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm password"
+                        required>
+
+                        <small
+                        class="error"
+                        id="confirmPasswordError">
+
+                        </small>
+
+                    </div>
+
+                    <!-- PDF UPLOAD -->
+
+                    <div class="form-group">
+
+                        <label>
+
+                            <i class="fas fa-file-pdf"></i>
+
+                            Upload Resume PDF
+
+                        </label>
+
+                        <input
+                        type="file"
+                        id="resume"
+                        accept=".pdf"
+                        required>
+
+                        <small
+                        class="error"
+                        id="resumeError">
+
+                        </small>
+
+                    </div>
+
+                    <!-- TERMS -->
+
+                    <div class="form-options">
+
+                        <label class="checkbox">
+
+                            <input
+                            type="checkbox"
+                            id="terms"
+                            required>
+
+                            I agree to Terms &
+                            Conditions
+
+                        </label>
+
+                    </div>
+
+                    <!-- BUTTON -->
+
+                    <button
+                    type="submit"
+                    class="btn-primary full-width">
+
+                        <i class="fas fa-user-plus"></i>
+
+                        Create Account
+
+                    </button>
+
+                </form>
+
+                <!-- FOOTER -->
+
+                <div class="auth-footer">
+
+                    <p>
+
+                        Already have an account?
+
+                        <a href="login.html">
+
+                            Login here
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div class="footer-section">
+
+                <h3>
+                    AutoLux
+                </h3>
+
+                <p>
+                    Premium futuristic luxury car marketplace.
+                </p>
+
+            </div>
+
+            <div class="footer-section">
+
+                <h4>
+                    Quick Links
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cars.html">
+                            Cars
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="services.html">
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 AutoLux.
+                All Rights Reserved.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ================= JQUERY ================= -->
+
+<script
+src="https://code.jquery.com/jquery-3.7.1.min.js">
+</script>
+
+<!-- ================= AUTH JS ================= -->
+
+<script src="auth.js"></script>
+
 </body>
+
 </html>

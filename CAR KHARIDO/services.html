@@ -1,41 +1,480 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - AutoLux</title>
+
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Services - AutoLux
+    </title>
+
+    <!-- CSS -->
+
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet">
+
 </head>
+
 <body>
-    <!-- Include same navbar as index.html -->
-    <!-- ... (copy navbar from index.html, remove active class from home) ... -->
-    
-    <section class="services-hero">
-        <div class="container">
-            <h1>Our Services</h1>
-            <p>Complete automotive solutions for every need</p>
-        </div>
-    </section>
 
-    <section class="services-section">
-        <div class="container">
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-car"></i>
-                    <h3>New Car Sales</h3>
-                    <p>Premium selection of latest models</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-car-crash"></i>
-                    <h3>Trade-In</h3>
-                    <p>Get the best value for your current vehicle</p>
-                </div>
-                <!-- Add more service cards -->
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <div class="nav-logo">
+
+            <a href="index.html">
+                AutoLux
+            </a>
+
+        </div>
+
+        <ul class="nav-menu">
+
+            <li>
+                <a href="index.html"
+                class="nav-link">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="cars.html"
+                class="nav-link">
+                    Cars
+                </a>
+            </li>
+
+            <li>
+                <a href="quiz.html"
+                class="nav-link">
+                    Quiz
+                </a>
+            </li>
+
+            <li>
+                <a href="services.html"
+                class="nav-link active">
+                    Services
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html"
+                class="nav-link">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html"
+                class="nav-link">
+                    Contact
+                </a>
+            </li>
+
+            <li>
+
+                <a href="cart.html"
+                class="nav-link"
+                id="cart-count">
+
+                    <i class="fas fa-shopping-cart"></i>
+
+                    Cart
+                    (<span id="cart-items">0</span>)
+
+                </a>
+
+            </li>
+
+        </ul>
+
+        <div class="nav-auth">
+
+            <a href="login.html"
+            class="btn-login">
+
+                Login
+
+            </a>
+
+            <a href="register.html"
+            class="btn-register">
+
+                Register
+
+            </a>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+
+        <div class="hamburger">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="about-hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Premium Auto Services
+        </h1>
+
+        <p>
+            Complete luxury automotive solutions.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= SERVICES ================= -->
+
+<section class="services-section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+
+            What We Offer
+
+        </h2>
+
+        <div class="services-grid">
+
+            <!-- CARD 1 -->
+
+            <div class="service-card">
+
+                <i class="fas fa-car-side"></i>
+
+                <h3>
+                    Luxury Car Sales
+                </h3>
+
+                <p>
+
+                    Explore premium sports,
+                    electric & luxury cars.
+
+                </p>
+
             </div>
-        </div>
-    </section>
 
-    <!-- Footer same as index.html -->
+            <!-- CARD 2 -->
+
+            <div class="service-card">
+
+                <i class="fas fa-money-bill-wave"></i>
+
+                <h3>
+                    Easy Financing
+                </h3>
+
+                <p>
+
+                    Flexible EMI & finance
+                    plans for your dream car.
+
+                </p>
+
+            </div>
+
+            <!-- CARD 3 -->
+
+            <div class="service-card">
+
+                <i class="fas fa-exchange-alt"></i>
+
+                <h3>
+                    Trade-In Deals
+                </h3>
+
+                <p>
+
+                    Exchange your old car
+                    for the newest luxury models.
+
+                </p>
+
+            </div>
+
+            <!-- CARD 4 -->
+
+            <div class="service-card">
+
+                <i class="fas fa-tools"></i>
+
+                <h3>
+                    Premium Servicing
+                </h3>
+
+                <p>
+
+                    Professional maintenance
+                    with genuine spare parts.
+
+                </p>
+
+            </div>
+
+            <!-- CARD 5 -->
+
+            <div class="service-card">
+
+                <i class="fas fa-shield-alt"></i>
+
+                <h3>
+                    Car Insurance
+                </h3>
+
+                <p>
+
+                    Secure your vehicle
+                    with premium insurance plans.
+
+                </p>
+
+            </div>
+
+            <!-- CARD 6 -->
+
+            <div class="service-card">
+
+                <i class="fas fa-road"></i>
+
+                <h3>
+                    Test Drive
+                </h3>
+
+                <p>
+
+                    Experience your dream car
+                    before purchasing.
+
+                </p>
+
+            </div>
+
+            <!-- CARD 7 -->
+
+            <div class="service-card">
+
+                <i class="fas fa-charging-station"></i>
+
+                <h3>
+                    EV Charging Support
+                </h3>
+
+                <p>
+
+                    Smart charging solutions
+                    for electric vehicles.
+
+                </p>
+
+            </div>
+
+            <!-- CARD 8 -->
+
+            <div class="service-card">
+
+                <i class="fas fa-headset"></i>
+
+                <h3>
+                    24/7 Support
+                </h3>
+
+                <p>
+
+                    Dedicated customer support
+                    anytime, anywhere.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= WHY CHOOSE ================= -->
+
+<section class="mission-section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+
+            Why Choose AutoLux?
+
+        </h2>
+
+        <div class="mission-features">
+
+            <div class="feature">
+
+                <i class="fas fa-star"></i>
+
+                <h3>
+                    Premium Experience
+                </h3>
+
+                <p>
+
+                    Futuristic luxury car buying experience.
+
+                </p>
+
+            </div>
+
+            <div class="feature">
+
+                <i class="fas fa-user-shield"></i>
+
+                <h3>
+                    Trusted Platform
+                </h3>
+
+                <p>
+
+                    100% secure & reliable automotive marketplace.
+
+                </p>
+
+            </div>
+
+            <div class="feature">
+
+                <i class="fas fa-bolt"></i>
+
+                <h3>
+                    Fast Process
+                </h3>
+
+                <p>
+
+                    Quick booking, financing & delivery system.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div class="footer-section">
+
+                <h3>
+                    AutoLux
+                </h3>
+
+                <p>
+                    Premium futuristic luxury car marketplace.
+                </p>
+
+            </div>
+
+            <div class="footer-section">
+
+                <h4>
+                    Quick Links
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cars.html">
+                            Cars
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="quiz.html">
+                            Quiz
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 AutoLux.
+                All Rights Reserved.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ================= JQUERY ================= -->
+
+<script
+src="https://code.jquery.com/jquery-3.7.1.min.js">
+</script>
+
+<!-- ================= SCRIPT ================= -->
+
+<script src="script.js"></script>
+
 </body>
+
 </html>

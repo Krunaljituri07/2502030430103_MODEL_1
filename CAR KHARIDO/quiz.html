@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Car Quiz - AutoLux
+    </title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <div class="nav-logo">
+
+            <a href="index.html">
+
+                AutoLux
+
+            </a>
+
+        </div>
+
+        <ul class="nav-menu">
+
+            <li>
+                <a href="index.html"
+                class="nav-link">
+
+                    Home
+
+                </a>
+            </li>
+
+            <li>
+                <a href="cars.html"
+                class="nav-link">
+
+                    Cars
+
+                </a>
+            </li>
+
+            <li>
+                <a href="quiz.html"
+                class="nav-link active">
+
+                    Quiz
+
+                </a>
+            </li>
+
+            <li>
+                <a href="services.html"
+                class="nav-link">
+
+                    Services
+
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html"
+                class="nav-link">
+
+                    About
+
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html"
+                class="nav-link"
+                id="cart-count">
+
+                    <i class="fas fa-shopping-cart"></i>
+
+                    Cart
+                    (<span id="cart-items">0</span>)
+
+                </a>
+            </li>
+
+        </ul>
+
+        <div class="nav-auth">
+
+            <a href="login.html"
+            class="btn-login">
+
+                Login
+
+            </a>
+
+            <a href="register.html"
+            class="btn-register">
+
+                Register
+
+            </a>
+
+        </div>
+
+        <div class="hamburger">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- ================= QUIZ HERO ================= -->
+
+<section class="about-hero">
+
+    <div class="hero-content">
+
+        <h1>
+
+            Find Your Perfect Car
+
+        </h1>
+
+        <p>
+
+            Take the smart luxury quiz.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= QUIZ SECTION ================= -->
+
+<section class="auth-section">
+
+    <div class="container">
+
+        <div class="auth-container">
+
+            <div class="auth-card">
+
+                <div class="auth-header">
+
+                    <h2>
+
+                        <i class="fas fa-car"></i>
+
+                        Car Recommendation Quiz
+
+                    </h2>
+
+                    <p>
+
+                        Answer a few questions.
+
+                    </p>
+
+                </div>
+
+                <form id="carQuizForm">
+
+                    <!-- BUDGET -->
+
+                    <div class="form-group">
+
+                        <label>
+
+                            Your Budget
+
+                        </label>
+
+                        <select
+                        id="budget"
+                        class="quiz-input"
+                        required>
+
+                            <option value="₹50L - ₹1Cr">
+
+                                ₹50L - ₹1Cr
+
+                            </option>
+
+                            <option value="₹1Cr - ₹2Cr">
+
+                                ₹1Cr - ₹2Cr
+
+                            </option>
+
+                            <option value="₹2Cr+">
+
+                                ₹2Cr+
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- CAR TYPE -->
+
+                    <div class="form-group">
+
+                        <label>
+
+                            Which Type Of Car
+                            Do You Want?
+
+                        </label>
+
+                        <select
+                        id="carType"
+                        class="quiz-input"
+                        required>
+
+                            <option value="luxury">
+
+                                Luxury
+
+                            </option>
+
+                            <option value="sports">
+
+                                Sports
+
+                            </option>
+
+                            <option value="electric">
+
+                                Electric
+
+                            </option>
+
+                            <option value="suv">
+
+                                SUV
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- COLOR -->
+
+                    <div class="form-group">
+
+                        <label>
+
+                            Favorite Color
+
+                        </label>
+
+                        <select
+                        class="quiz-input">
+
+                            <option>
+
+                                Black
+
+                            </option>
+
+                            <option>
+
+                                White
+
+                            </option>
+
+                            <option>
+
+                                Red
+
+                            </option>
+
+                            <option>
+
+                                Blue
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- SUBMIT -->
+
+                    <button
+                    type="submit"
+                    class="btn-primary full-width">
+
+                        Find My Dream Car
+
+                    </button>
+
+                </form>
+
+                <!-- RESULT -->
+
+                <div id="quiz-result">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div class="footer-section">
+
+                <h3>
+
+                    AutoLux
+
+                </h3>
+
+                <p>
+
+                    Future Of Premium Cars.
+
+                </p>
+
+            </div>
+
+            <div class="footer-section">
+
+                <h4>
+
+                    Quick Links
+
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cars.html">
+                            Cars
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 AutoLux
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script
+src="https://code.jquery.com/jquery-3.7.1.min.js">
+</script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

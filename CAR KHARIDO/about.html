@@ -1,111 +1,607 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - AutoLux</title>
+
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        About Us - AutoLux
+    </title>
+
+    <!-- CSS -->
+
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet">
+
 </head>
+
 <body>
-    <!-- Navigation (About active) -->
 
-    <!-- Hero Section -->
-    <section class="about-hero">
-        <div class="container">
-            <h1>About AutoLux</h1>
-            <p> Years of Automotive Excellence</p>
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <div class="nav-logo">
+
+            <a href="index.html">
+                AutoLux
+            </a>
+
         </div>
-    </section>
 
-    <!-- About Content -->
-    <section class="about-section">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Premium Car Dealership Since 2026</h2>
-                    <p>
-                        AutoLux has been serving car enthusiasts for over 25 years, 
-                        offering the finest selection of luxury and performance vehicles. 
-                        Our commitment to excellence, customer satisfaction, and 
-                        unparalleled service has made us the premier destination for 
-                        premium automobiles.
-                    </p>
-                    <div class="stats-grid">
-                        <div class="stat">
-                            <h3>5000+</h3>
-                            <p>Cars Sold</p>
-                        </div>
-                        <div class="stat">
-                            <h3>16+</h3>
-                            <p>Years Experience</p>
-                        </div>
-                        <div class="stat">
-                            <h3>98%</h3>
-                            <p>Customer Satisfaction</p>
-                        </div>
-                        <div class="stat">
-                            <h3>50+</h3>
-                            <p>Brands Available</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-car-side"></i>
-                        <p>Premium Collection</p>
-                    </div>
-                </div>
-            </div>
+        <ul class="nav-menu">
 
-            <!-- Team Section -->
-            <div class="team-section">
-                <h2>Meet Our Team</h2>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="team-avatar">JD</div>
-                        <h4>krunal jituri</h4>
-                        <p>CEO & Founder</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-avatar">SM</div>
-                        <h4>Sarva bokhanii</h4>
-                        <p>Sales Director</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-avatar">MK</div>
-                        <h4>Aanand Man</h4>
-                        <p>Service Manager</p>
-                    </div>
-                </div>
-            </div>
+            <li>
+                <a href="index.html"
+                class="nav-link">
+                    Home
+                </a>
+            </li>
 
-            <!-- Mission Section -->
-            <div class="mission-section">
-                <h2>Our Mission</h2>
+            <li>
+                <a href="cars.html"
+                class="nav-link">
+                    Cars
+                </a>
+            </li>
+
+            <li>
+                <a href="quiz.html"
+                class="nav-link">
+                    Quiz
+                </a>
+            </li>
+
+            <li>
+                <a href="services.html"
+                class="nav-link">
+                    Services
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html"
+                class="nav-link active">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html"
+                class="nav-link">
+                    Contact
+                </a>
+            </li>
+
+            <li>
+
+                <a href="cart.html"
+                class="nav-link"
+                id="cart-count">
+
+                    <i class="fas fa-shopping-cart"></i>
+
+                    Cart
+                    (<span id="cart-items">0</span>)
+
+                </a>
+
+            </li>
+
+        </ul>
+
+        <div class="nav-auth">
+
+            <a href="login.html"
+            class="btn-login">
+
+                Login
+
+            </a>
+
+            <a href="register.html"
+            class="btn-register">
+
+                Register
+
+            </a>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+
+        <div class="hamburger">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="about-hero">
+
+    <div class="hero-content">
+
+        <h1>
+
+            About AutoLux
+
+        </h1>
+
+        <p>
+
+            Driving Luxury Into The Future.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= ABOUT SECTION ================= -->
+
+<section class="about-section">
+
+    <div class="container">
+
+        <div class="about-content">
+
+            <!-- LEFT -->
+
+            <div class="about-text">
+
+                <h2>
+
+                    Premium Car Marketplace
+                    Since 2026
+
+                </h2>
+
                 <p>
-                    To provide exceptional automotive experiences through 
-                    premium vehicle selection, expert service, and 
-                    outstanding customer care.
-                </p>
-                <div class="mission-features">
-                    <div class="feature">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>Quality Guaranteed</h4>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <h4>Customer First</h4>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-handshake"></i>
-                        <h4>Trusted Partner</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
+                    AutoLux is a futuristic
+                    luxury car marketplace
+                    designed for car lovers
+                    who want premium
+                    performance, luxury
+                    design and advanced
+                    technology.
+
+                </p>
+
+                <p>
+
+                    From supercars to
+                    electric vehicles,
+                    AutoLux delivers
+                    modern automotive
+                    experiences with
+                    innovation and style.
+
+                </p>
+
+                <!-- STATS -->
+
+                <div class="stats-grid">
+
+                    <div class="stat">
+
+                        <h3>
+                            5000+
+                        </h3>
+
+                        <p>
+                            Cars Sold
+                        </p>
+
+                    </div>
+
+                    <div class="stat">
+
+                        <h3>
+                            50+
+                        </h3>
+
+                        <p>
+                            Luxury Brands
+                        </p>
+
+                    </div>
+
+                    <div class="stat">
+
+                        <h3>
+                            98%
+                        </h3>
+
+                        <p>
+                            Happy Clients
+                        </p>
+
+                    </div>
+
+                    <div class="stat">
+
+                        <h3>
+                            24/7
+                        </h3>
+
+                        <p>
+                            Support
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="about-image">
+
+                <div class="image-placeholder">
+
+                    <i class="fas fa-car-side"></i>
+
+                    <h2>
+
+                        Premium Collection
+
+                    </h2>
+
+                    <p>
+
+                        Luxury • Sports • EV
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= TEAM ================= -->
+
+        <div class="team-section">
+
+            <h2 class="section-title">
+
+                Meet Our Team
+
+            </h2>
+
+            <div class="team-grid">
+
+                <!-- MEMBER 1 -->
+
+                <div class="team-member">
+
+                    <div class="team-avatar">
+
+                        KJ
+
+                    </div>
+
+                    <h4>
+
+                        Krunal Jituri
+
+                    </h4>
+
+                    <p>
+
+                        CEO & Founder
+
+                    </p>
+
+                </div>
+
+                <!-- MEMBER 2 -->
+
+                <div class="team-member">
+
+                    <div class="team-avatar">
+
+                        SB
+
+                    </div>
+
+                    <h4>
+
+                        Sarva Bokhani
+
+                    </h4>
+
+                    <p>
+
+                        Sales Director
+
+                    </p>
+
+                </div>
+
+                <!-- MEMBER 3 -->
+
+                <div class="team-member">
+
+                    <div class="team-avatar">
+
+                        AM
+
+                    </div>
+
+                    <h4>
+
+                        Aanand Man
+
+                    </h4>
+
+                    <p>
+
+                        Service Manager
+
+                    </p>
+
+                </div>
+
+                <!-- MEMBER 4 -->
+
+                <div class="team-member">
+
+                    <div class="team-avatar">
+
+                        AK
+
+                    </div>
+
+                    <h4>
+
+                        Aryan Kapadiya
+
+                    </h4>
+
+                    <p>
+
+                        Marketing Head
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= MISSION ================= -->
+
+        <div class="mission-section">
+
+            <h2 class="section-title">
+
+                Our Mission
+
+            </h2>
+
+            <p>
+
+                To redefine luxury car
+                shopping with innovation,
+                premium experiences and
+                futuristic automotive
+                technology.
+
+            </p>
+
+            <!-- FEATURES -->
+
+            <div class="mission-features">
+
+                <div class="feature">
+
+                    <i class="fas fa-shield-alt"></i>
+
+                    <h4>
+
+                        Quality Guaranteed
+
+                    </h4>
+
+                    <p>
+
+                        Premium verified vehicles.
+
+                    </p>
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fas fa-users"></i>
+
+                    <h4>
+
+                        Customer First
+
+                    </h4>
+
+                    <p>
+
+                        Personalized luxury experience.
+
+                    </p>
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fas fa-bolt"></i>
+
+                    <h4>
+
+                        Futuristic Innovation
+
+                    </h4>
+
+                    <p>
+
+                        Smart & modern technology.
+
+                    </p>
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fas fa-handshake"></i>
+
+                    <h4>
+
+                        Trusted Partner
+
+                    </h4>
+
+                    <p>
+
+                        Reliable automotive marketplace.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div class="footer-section">
+
+                <h3>
+
+                    AutoLux
+
+                </h3>
+
+                <p>
+
+                    Premium futuristic luxury
+                    car marketplace.
+
+                </p>
+
+            </div>
+
+            <div class="footer-section">
+
+                <h4>
+
+                    Quick Links
+
+                </h4>
+
+                <ul>
+
+                    <li>
+
+                        <a href="index.html">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="cars.html">
+
+                            Cars
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="quiz.html">
+
+                            Quiz
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="services.html">
+
+                            Services
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 AutoLux.
+                All Rights Reserved.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ================= JQUERY ================= -->
+
+<script
+src="https://code.jquery.com/jquery-3.7.1.min.js">
+</script>
+
+<!-- ================= SCRIPT ================= -->
+
+<script src="script.js"></script>
+
 </body>
+
 </html>
