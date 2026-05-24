@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Royal Feast — Where Royalty Dines</title>
+  <meta name="description" content="Royal Feast – Premium luxury food delivery. Royal people deserve royal food." />
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════ LOADING SCREEN ═══════════ -->
+<div class="loading-screen">
+  <div class="loading-logo">Royal Feast</div>
+  <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
+</div>
+
+<!-- ═══════════ PARTICLES ═══════════ -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- ═══════════ TOAST CONTAINER ═══════════ -->
+<div class="toast-container-royal"></div>
+
+<!-- ═══════════ SCROLL TO TOP ═══════════ -->
+<button class="scroll-top-btn"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav class="navbar navbar-expand-lg royal-navbar">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand-royal" href="index.html">
+      <i class="fas fa-crown me-2" style="font-size:1rem;"></i>Royal Feast
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#royalNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="royalNav">
+      <ul class="navbar-nav align-items-lg-center gap-lg-1 mt-3 mt-lg-0">
+        <li class="nav-item"><a class="nav-link royal-nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link royal-nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link royal-nav-link" href="#menu-section">Menu</a></li>
+        <li class="nav-item"><a class="nav-link royal-nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link royal-nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link royal-nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="nav-link royal-nav-link position-relative" href="cart.html">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-badge position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background:var(--gold);color:var(--black);font-size:0.6rem;display:none;">0</span>
+          </a>
+        </li>
+        <li class="nav-item ms-lg-2">
+          <a class="nav-link nav-btn-royal" href="login.html">Login</a>
+        </li>
+        <li class="nav-item ms-lg-1">
+          <a class="nav-link nav-btn-register" href="register.html">Register</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO CAROUSEL ═══════════ -->
+<section id="home">
+  <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+
+    <div class="carousel-inner">
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80');"></div>
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <div class="hero-content">
+            <span class="hero-crown"><i class="fas fa-crown"></i></span>
+            <p class="hero-tagline">Est. 2024 · Premium Dining</p>
+            <h1 class="hero-title">Royal People Deserve<br>Royal Food</h1>
+            <p class="hero-subtitle">Experience the grandeur of a palace feast — curated dishes fit for kings and queens, delivered to your throne.</p>
+            <div class="hero-buttons">
+              <button class="btn-royal-gold btn-pulse" data-bs-toggle="modal" data-bs-target="#orderModal">
+                <i class="fas fa-crown me-2"></i>Order Now
+              </button>
+              <a href="#menu-section" class="btn-royal-outline">Explore Menu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="carousel-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80');"></div>
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <div class="hero-content">
+            <span class="hero-crown"><i class="fas fa-gem"></i></span>
+            <p class="hero-tagline">Exquisite · Opulent · Unforgettable</p>
+            <h1 class="hero-title">A Symphony of<br>Flavours & Luxury</h1>
+            <p class="hero-subtitle">Every dish is a masterpiece, crafted with the finest ingredients and served with royal elegance.</p>
+            <div class="hero-buttons">
+              <a href="#menu-section" class="btn-royal-gold btn-pulse">View Royal Menu</a>
+              <a href="about.html" class="btn-royal-outline">Our Story</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="carousel-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1920&q=80');"></div>
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <div class="hero-content">
+            <span class="hero-crown"><i class="fas fa-star"></i></span>
+            <p class="hero-tagline">Free Delivery · VIP Dining · Catering</p>
+            <h1 class="hero-title">The Kingdom's Finest<br>Awaits You</h1>
+            <p class="hero-subtitle">From royal banquets to intimate candlelit dinners — your palace dining experience begins here.</p>
+            <div class="hero-buttons">
+              <a href="pages/services.html" class="btn-royal-gold btn-pulse">Our Services</a>
+              <a href="pages/contact.html" class="btn-royal-outline">Book a Table</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</section>
+
+<!-- ═══════════ STATS SECTION ═══════════ -->
+<section class="stats-section">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-6 col-md-3">
+        <div class="stat-card fade-in-up">
+          <div class="stat-number" data-target="12000" data-suffix="+">0+</div>
+          <div class="stat-label">Royal Guests</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-card fade-in-up delay-2">
+          <div class="stat-number" data-target="85" data-suffix="+">0+</div>
+          <div class="stat-label">Premium Dishes</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-card fade-in-up delay-3">
+          <div class="stat-number" data-target="15" data-suffix="">0</div>
+          <div class="stat-label">Years of Excellence</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-card fade-in-up delay-4">
+          <div class="stat-number" data-target="98" data-suffix="%">0%</div>
+          <div class="stat-label">Royal Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="royal-separator"></div>
+
+<!-- ═══════════ MENU SECTION ═══════════ -->
+<section id="menu-section" class="menu-section">
+  <div class="container">
+    <div class="text-center mb-2 fade-in-up">
+      <div class="ornament">
+        <div class="ornament-line"></div>
+        <i class="fas fa-utensils ornament-icon" style="color:var(--gold)"></i>
+        <div class="ornament-line right"></div>
+      </div>
+      <h2 class="section-title">Royal Menu</h2>
+      <p class="section-subtitle">Culinary Masterpieces for the Discerning Palate</p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="menu-filter-tabs fade-in-up delay-2">
+      <button class="filter-tab active" data-filter="all">All Dishes</button>
+      <button class="filter-tab" data-filter="veg">🌿 Vegetarian</button>
+      <button class="filter-tab" data-filter="nonveg">🍖 Non-Veg</button>
+      <button class="filter-tab" data-filter="egg">🥚 Eggitarian</button>
+      <button class="filter-tab" data-filter="dessert">🍰 Desserts</button>
+      <button class="filter-tab" data-filter="mocktail">🥂 Mocktails</button>
+    </div>
+
+    <!-- Food Cards Grid -->
+    <div class="row g-4" id="menu-grid">
+
+      <!-- Card 1 -->
+      <div class="col-12 col-md-6 col-lg-4 food-card-wrap fade-in-up delay-1" data-category="nonveg">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&q=80" alt="Royal Butter Chicken" loading="lazy" />
+            <span class="food-badge badge-nonveg">Non-Veg</span>
+            <span class="food-badge badge-royal" style="left:auto;right:0.75rem;">Chef's Pick</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-name">Royal Butter Chicken</div>
+            <div class="food-desc">Slow-cooked in saffron-infused cream, served with gilded naan</div>
+            <div class="food-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="count">(342)</span>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">₹649</span>
+              <button class="btn-add-cart">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-12 col-md-6 col-lg-4 food-card-wrap fade-in-up delay-2" data-category="veg">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80" alt="Palace Dal Makhani" loading="lazy" />
+            <span class="food-badge badge-veg">Veg</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-name">Palace Dal Makhani</div>
+            <div class="food-desc">72-hour slow-cooked black lentils with royal spices and artisan butter</div>
+            <div class="food-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span class="count">(289)</span>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">₹449</span>
+              <button class="btn-add-cart">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-12 col-md-6 col-lg-4 food-card-wrap fade-in-up delay-3" data-category="nonveg">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&q=80" alt="Crown Biryani" loading="lazy" />
+            <span class="food-badge badge-nonveg">Non-Veg</span>
+            <span class="food-badge badge-royal" style="left:auto;right:0.75rem;">Bestseller</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-name">Crown Biryani</div>
+            <div class="food-desc">Dum-cooked Basmati with aged saffron, caramelized onions & tender lamb</div>
+            <div class="food-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="count">(521)</span>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">₹849</span>
+              <button class="btn-add-cart">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-12 col-md-6 col-lg-4 food-card-wrap fade-in-up delay-1" data-category="veg">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&q=80" alt="Imperial Paneer Tikka" loading="lazy" />
+            <span class="food-badge badge-veg">Veg</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-name">Imperial Paneer Tikka</div>
+            <div class="food-desc">Fresh cottage cheese marinated in royal spices, char-grilled to perfection</div>
+            <div class="food-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="count">(198)</span>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">₹549</span>
+              <button class="btn-add-cart">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-12 col-md-6 col-lg-4 food-card-wrap fade-in-up delay-2" data-category="nonveg">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80" alt="Maharaja Seekh Kebab" loading="lazy" />
+            <span class="food-badge badge-nonveg">Non-Veg</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-name">Maharaja Seekh Kebab</div>
+            <div class="food-desc">Minced lamb & aromatic herbs, skewered and flame-kissed over royal charcoal</div>
+            <div class="food-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span class="count">(276)</span>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">₹749</span>
+              <button class="btn-add-cart">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="col-12 col-md-6 col-lg-4 food-card-wrap fade-in-up delay-3" data-category="egg">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=600&q=80" alt="Nawabi Egg Curry" loading="lazy" />
+            <span class="food-badge badge-egg">Eggitarian</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-name">Nawabi Egg Masala</div>
+            <div class="food-desc">Heritage spiced egg curry in a rich tomato-cashew gravy, palace recipe</div>
+            <div class="food-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              <span class="count">(143)</span>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">₹399</span>
+              <button class="btn-add-cart">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="col-12 col-md-6 col-lg-4 food-card-wrap fade-in-up delay-1" data-category="dessert">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80" alt="Saffron Gulab Jamun" loading="lazy" />
+            <span class="food-badge badge-veg">Veg</span>
+            <span class="food-badge badge-royal" style="left:auto;right:0.75rem;">Royal Dessert</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-name">Saffron Gulab Jamun</div>
+            <div class="food-desc">Milk-solid dumplings in gold saffron syrup with edible silver leaf</div>
+            <div class="food-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="count">(412)</span>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">₹299</span>
+              <button class="btn-add-cart">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="col-12 col-md-6 col-lg-4 food-card-wrap fade-in-up delay-2" data-category="dessert">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&q=80" alt="Royal Rasmalai" loading="lazy" />
+            <span class="food-badge badge-veg">Veg</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-name">Royal Rasmalai</div>
+            <div class="food-desc">Velvety ricotta patties in saffron-rose milk, garnished with pistachios</div>
+            <div class="food-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="count">(367)</span>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">₹349</span>
+              <button class="btn-add-cart">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="col-12 col-md-6 col-lg-4 food-card-wrap fade-in-up delay-3" data-category="mocktail">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1546171753-97d7676e4602?w=600&q=80" alt="Golden Rose Mocktail" loading="lazy" />
+            <span class="food-badge badge-veg">Veg</span>
+            <span class="food-badge badge-royal" style="left:auto;right:0.75rem;">Signature</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-name">Golden Rose Elixir</div>
+            <div class="food-desc">Rose water, gold flakes, elderflower & citrus — the drink of royalty</div>
+            <div class="food-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="count">(234)</span>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">₹449</span>
+              <button class="btn-add-cart">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="col-12 col-md-6 col-lg-4 food-card-wrap fade-in-up delay-1" data-category="veg">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&q=80" alt="Kesar Malai Kofta" loading="lazy" />
+            <span class="food-badge badge-veg">Veg</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-name">Kesar Malai Kofta</div>
+            <div class="food-desc">Soft paneer dumplings in a saffron-cream gravy with floral notes</div>
+            <div class="food-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span class="count">(178)</span>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">₹499</span>
+              <button class="btn-add-cart">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 11 -->
+      <div class="col-12 col-md-6 col-lg-4 food-card-wrap fade-in-up delay-2" data-category="nonveg">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80" alt="Emperor's Rogan Josh" loading="lazy" />
+            <span class="food-badge badge-nonveg">Non-Veg</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-name">Emperor's Rogan Josh</div>
+            <div class="food-desc">Kashmir valley lamb slow-braised in a symphony of whole spices</div>
+            <div class="food-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="count">(302)</span>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">₹949</span>
+              <button class="btn-add-cart">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 12 -->
+      <div class="col-12 col-md-6 col-lg-4 food-card-wrap fade-in-up delay-3" data-category="mocktail">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&q=80" alt="Royal Blue Lagoon" loading="lazy" />
+            <span class="food-badge badge-veg">Veg</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-name">Royal Blue Lagoon</div>
+            <div class="food-desc">Butterfly pea flower, lychee, mint & sparkling water in crystal goblet</div>
+            <div class="food-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="count">(189)</span>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">₹399</span>
+              <button class="btn-add-cart">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /row -->
+
+    <div class="text-center mt-5 fade-in-up">
+      <a href="pages/gallery.html" class="btn-royal-outline me-3">Full Gallery</a>
+      <a href="#" class="btn-royal-gold" id="downloadMenuBtn">
+        <i class="fas fa-download me-2"></i>Download Menu PDF
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="royal-separator"></div>
+
+<!-- ═══════════ SERVICES SECTION ═══════════ -->
+<section id="services" class="services-section">
+  <div class="container">
+    <div class="text-center mb-2 fade-in-up">
+      <div class="ornament">
+        <div class="ornament-line"></div>
+        <i class="fas fa-concierge-bell ornament-icon" style="color:var(--gold)"></i>
+        <div class="ornament-line right"></div>
+      </div>
+      <h2 class="section-title">Royal Services</h2>
+      <p class="section-subtitle">Every Wish, Fulfilled in Royal Fashion</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-6 col-lg-4 fade-in-up delay-1">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-motorcycle"></i></div>
+          <div class="service-title">Royal Fast Delivery</div>
+          <div class="service-desc">Your feast arrives in 30 minutes or less, packed with regal care and warmth.</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-4 fade-in-up delay-2">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-calendar-check"></i></div>
+          <div class="service-title">Online Booking</div>
+          <div class="service-desc">Reserve your royal table in seconds — seamless, elegant, and effortless.</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-4 fade-in-up delay-3">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-hat-chef"></i></div>
+          <div class="service-title">Premium Catering</div>
+          <div class="service-desc">We bring palace dining to your events — from intimate gatherings to grand banquets.</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-4 fade-in-up delay-4">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-gem"></i></div>
+          <div class="service-title">VIP Dining Suite</div>
+          <div class="service-desc">Exclusive private suites with a personal butler, candelabras, and bespoke menus.</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-4 fade-in-up delay-5">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-birthday-cake"></i></div>
+          <div class="service-title">Birthday Royale</div>
+          <div class="service-desc">Celebrate like royalty with our signature birthday banquets and golden cake towers.</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-4 fade-in-up delay-6">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-ring"></i></div>
+          <div class="service-title">Wedding Catering</div>
+          <div class="service-desc">From royal feasts to intimate ceremonies — we craft the culinary backdrop of your love story.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="royal-separator"></div>
+
+<!-- ═══════════ ROYAL DINING EXPERIENCE ═══════════ -->
+<section class="royal-dining-section section-padding" id="dining">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 fade-in-up">
+        <div class="dining-img-wrap">
+          <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=800&q=80" alt="Royal Dining Hall" loading="lazy" />
+          <div class="dining-badge">
+            <span class="dining-badge-num">★ 4.9</span>
+            <span class="dining-badge-text">Royal Rating</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 fade-in-up delay-3">
+        <div class="ornament justify-content-start mb-3">
+          <div class="ornament-line" style="width:40px;"></div>
+          <i class="fas fa-crown" style="color:var(--gold);font-size:0.8rem;"></i>
+          <div class="ornament-line right" style="width:40px;"></div>
+        </div>
+        <h2 class="section-title text-start mb-3">The Royal<br>Dining Experience</h2>
+        <p style="font-family:var(--font-body);color:var(--silver);font-size:1.05rem;margin-bottom:2rem;font-style:italic;">
+          Step into a world where every meal is a ceremony. Our palace-inspired dining halls offer an atmosphere of candlelight grandeur, golden decor, and culinary artistry fit for monarchs.
+        </p>
+
+        <div class="dining-feature">
+          <i class="fas fa-fire dining-feature-icon"></i>
+          <div class="dining-feature-text"><strong>Candlelit Atmosphere</strong> — warm amber glow over golden tableware</div>
+        </div>
+        <div class="dining-feature">
+          <i class="fas fa-crown dining-feature-icon"></i>
+          <div class="dining-feature-text"><strong>Palace Architecture</strong> — vaulted ceilings, royal murals, crystal chandeliers</div>
+        </div>
+        <div class="dining-feature">
+          <i class="fas fa-music dining-feature-icon"></i>
+          <div class="dining-feature-text"><strong>Live Classical Music</strong> — sitar & violin performances every evening</div>
+        </div>
+        <div class="dining-feature">
+          <i class="fas fa-user-tie dining-feature-icon"></i>
+          <div class="dining-feature-text"><strong>Personal Butler Service</strong> — dedicated attendants for every table</div>
+        </div>
+        <div class="dining-feature">
+          <i class="fas fa-leaf dining-feature-icon"></i>
+          <div class="dining-feature-text"><strong>Farm-to-Palace Ingredients</strong> — sourced from royal organic estates</div>
+        </div>
+
+        <a href="about.html" class="btn-royal-gold mt-4 d-inline-block">
+          <i class="fas fa-castle me-2"></i>Discover Our Palace
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="royal-separator"></div>
+
+<!-- ═══════════ GALLERY PREVIEW ═══════════ -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <div class="text-center mb-5 fade-in-up">
+      <div class="ornament">
+        <div class="ornament-line"></div>
+        <i class="fas fa-images" style="color:var(--gold)"></i>
+        <div class="ornament-line right"></div>
+      </div>
+      <h2 class="section-title">Royal Gallery</h2>
+      <p class="section-subtitle">Glimpses of Palace Dining Magnificence</p>
+    </div>
+
+    <div class="gallery-grid fade-in-up delay-2">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Grand Banquet" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Grand Banquet Hall</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Candlelit Table" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Candlelit Table</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80" alt="Chef's Artistry" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Chef's Artistry</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&q=80" alt="Royal Cocktails" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Royal Elixirs</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="Feast Display" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-text">The Royal Feast</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80" alt="Dessert Cart" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Dessert Royale</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=600&q=80" alt="Palace Dining" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Palace Dining</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80" alt="Artisan Bread" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Artisan Bread</span></div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5 fade-in-up">
+      <a href="pages/gallery.html" class="btn-royal-outline">View Full Gallery</a>
+    </div>
+  </div>
+</section>
+
+<div class="royal-separator"></div>
+
+<!-- ═══════════ CUSTOMER REVIEWS ═══════════ -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="text-center mb-5 fade-in-up">
+      <div class="ornament">
+        <div class="ornament-line"></div>
+        <i class="fas fa-quote-right" style="color:var(--gold)"></i>
+        <div class="ornament-line right"></div>
+      </div>
+      <h2 class="section-title">Royal Testimonials</h2>
+      <p class="section-subtitle">Words from Our Distinguished Guests</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 fade-in-up delay-1">
+        <div class="review-card">
+          <div class="d-flex align-items-center">
+            <img src="https://i.pravatar.cc/100?img=12" class="review-avatar" alt="Arjun Mehta" />
+            <div>
+              <div class="reviewer-name">Krunal Jituri</div>
+              <div class="reviewer-title">Business Magnate, Mumbai</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">The Crown Biryani left me speechless. Every grain of rice was kissed with saffron — this is not food, this is an experience worthy of royalty. I've dined across 40 countries, and Royal Feast stands supreme.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in-up delay-2">
+        <div class="review-card">
+          <div class="d-flex align-items-center">
+            <img src="https://i.pravatar.cc/100?img=27" class="review-avatar" alt="Priya Sharma" />
+            <div>
+              <div class="reviewer-name">Krunal Jituri</div>
+              <div class="reviewer-title">Celebrity Chef, Delhi</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">As a professional chef, I rarely surrender to another's kitchen. But Royal Feast's Dal Makhani — slow-cooked for 72 hours — made me forget my own recipes. Absolutely magnificent craftsmanship.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in-up delay-3">
+        <div class="review-card">
+          <div class="d-flex align-items-center">
+            <img src="https://i.pravatar.cc/100?img=51" class="review-avatar" alt="Rahul Kapoor" />
+            <div>
+              <div class="reviewer-name">Aanand Man</div>
+              <div class="reviewer-title">Film Director, Bollywood</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">We hosted our entire film crew's wrap party here. The catering team was impeccable, the food divine. The Golden Rose Elixir deserves its own award. Royal Feast is now our permanent celebration partner.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in-up delay-1">
+        <div class="review-card">
+          <div class="d-flex align-items-center">
+            <img src="https://i.pravatar.cc/100?img=32" class="review-avatar" alt="Ananya Reddy" />
+            <div>
+              <div class="reviewer-name">Kiran Prasad</div>
+              <div class="reviewer-title">Food Critic, Hyderabad</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">I've reviewed over 500 restaurants in my career. Royal Feast earns a perfect score. The ambience, the service, the flavours — it all comes together like a perfectly composed symphony.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in-up delay-2">
+        <div class="review-card">
+          <div class="d-flex align-items-center">
+            <img src="https://i.pravatar.cc/100?img=44" class="review-avatar" alt="Vikram Singhania" />
+            <div>
+              <div class="reviewer-name">sharva bokhani</div>
+              <div class="reviewer-title">Industrialist, Pune</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Our wedding catering was handled with unprecedented grace. 800 guests, 40 dishes, flawless execution. Royal Feast didn't just feed us — they orchestrated an unforgettable culinary opera.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in-up delay-3">
+        <div class="review-card">
+          <div class="d-flex align-items-center">
+            <img src="https://i.pravatar.cc/100?img=19" class="review-avatar" alt="Meera Pillai" />
+            <div>
+              <div class="reviewer-name">mukund mewada</div>
+              <div class="reviewer-title">Interior Designer, Bangalore</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">The interior of the dining suite rivals the finest palaces I've designed. More importantly, the Saffron Rasmalai was the most elegant dessert I've ever tasted. A true masterpiece.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="royal-separator"></div>
+
+<!-- ═══════════ CONTACT SECTION ═══════════ -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="text-center mb-5 fade-in-up">
+      <div class="ornament">
+        <div class="ornament-line"></div>
+        <i class="fas fa-envelope" style="color:var(--gold)"></i>
+        <div class="ornament-line right"></div>
+      </div>
+      <h2 class="section-title">Royal Audience</h2>
+      <p class="section-subtitle">Command Us — We Shall Answer</p>
+    </div>
+
+    <div class="row g-5 justify-content-center">
+      <div class="col-lg-7 fade-in-up delay-2">
+        <div class="contact-form-wrap">
+          <form id="contact-form">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="royal-label">Your Royal Name</label>
+                <input type="text" class="form-control royal-input" placeholder="e.g. Maharaja Arjun" required />
+              </div>
+              <div class="col-md-6">
+                <label class="royal-label">Royal Email</label>
+                <input type="email" class="form-control royal-input" placeholder="name@domain.com" required />
+              </div>
+              <div class="col-12">
+                <label class="royal-label">Royal Phone</label>
+                <input type="tel" class="form-control royal-input" placeholder="+91 00000 00000" />
+              </div>
+              <div class="col-12">
+                <label class="royal-label">Your Royal Command</label>
+                <textarea class="form-control royal-input" rows="4" placeholder="Share your request with us..." required></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn-royal-gold w-100">
+                  <i class="fas fa-paper-plane me-2"></i>Send Royal Message
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-4 fade-in-up delay-4">
+        <div class="service-card h-auto">
+          <h4 class="service-title mb-3">Find Our Palace</h4>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>42 Palace Boulevard, Royal Gardens, Mumbai — 400001</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+91 98765 43210</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>royals@royalfeast.in</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-clock"></i>
+            <span>Mon–Sun: 11:00 AM – 11:00 PM</span>
+          </div>
+          <div class="footer-contact-item mt-3">
+            <i class="fas fa-crown"></i>
+            <span><em>Reservations recommended for VIP suites.</em></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="royal-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="footer-brand"><i class="fas fa-crown me-2"></i>Royal Feast</div>
+        <p class="footer-tagline">"Where every meal is a ceremony, and every guest is royalty."</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <div class="footer-heading">Quick Links</div>
+        <a class="footer-link" href="index.html">Home</a>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="#menu-section">Menu</a>
+        <a class="footer-link" href="pages/gallery.html">Gallery</a>
+        <a class="footer-link" href="pages/services.html">Services</a>
+        <a class="footer-link" href="pages/contact.html">Contact</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <div class="footer-heading">Account</div>
+        <a class="footer-link" href="pages/login.html">Login</a>
+        <a class="footer-link" href="pages/register.html">Register</a>
+        <a class="footer-link" href="pages/cart.html">My Cart</a>
+        <a class="footer-link" href="pages/dining.html">Dining Experience</a>
+      </div>
+      <div class="col-lg-4">
+        <div class="footer-heading">Contact Us</div>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>42 Palace Boulevard, Royal Gardens, Mumbai — 400001</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+91 98765 43210</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>royals@royalfeast.in</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span style="color:var(--gold);">© 2024 Royal Feast</span> &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Crafted with <i class="fas fa-crown text-gold"></i> for Royalty
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════ ORDER NOW MODAL ═══════════ -->
+<div class="modal fade royal-modal" id="orderModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-crown me-2"></i>Place Your Royal Order</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-12">
+            <label class="royal-label">Item</label>
+            <input type="text" id="modal-item-name" class="form-control royal-input" placeholder="Select a dish..." />
+          </div>
+          <div class="col-12">
+            <label class="royal-label">Your Name</label>
+            <input type="text" id="modal-customer-name" class="form-control royal-input" placeholder="Your royal name" />
+          </div>
+          <div class="col-12">
+            <label class="royal-label">Phone Number</label>
+            <input type="tel" id="modal-customer-phone" class="form-control royal-input" placeholder="+91 00000 00000" />
+          </div>
+          <div class="col-12">
+            <label class="royal-label">Delivery Address</label>
+            <textarea class="form-control royal-input" rows="2" placeholder="Your palace address..."></textarea>
+          </div>
+          <div class="col-12" id="modal-item-price" style="font-family:var(--font-display);color:var(--gold);font-size:1.2rem;text-align:right;"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-royal-outline" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn-royal-gold" id="confirm-order-btn">
+          <i class="fas fa-crown me-2"></i>Confirm Royal Order
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ GALLERY MODAL ═══════════ -->
+<div class="modal fade royal-modal" id="galleryModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Royal Gallery</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-0">
+        <img src="" alt="" style="width:100%;max-height:70vh;object-fit:contain;" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Download Menu PDF (demo)
+  document.getElementById('downloadMenuBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    // Show toast via jQuery
+    $('.toast-container-royal').append('<div class="royal-toast"><i class="fas fa-download"></i> Royal Menu PDF downloading... 👑</div>');
+    setTimeout(() => $('.royal-toast').last().fadeOut(400, function(){$(this).remove();}), 2800);
+  });
+</script>
+</body>
+</html>
