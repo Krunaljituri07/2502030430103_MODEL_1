@@ -4,46 +4,35 @@
 
 $(document).ready(function () {
 
-  /* ---- Loading Screen ---- */
-  /* ---- Fast Loading Screen ---- */
-
-$(window).on('load', function () {
-
-  $('.loading-screen').fadeOut(400, function () {
-    $(this).remove();
+  /* ---- Loading Screen — hide ASAP once DOM is ready ---- */
+  // Use requestAnimationFrame so first paint fires before we even start the timer
+  requestAnimationFrame(function () {
+    setTimeout(function () {
+      var ls = $('.loading-screen');
+      ls.addClass('hidden');
+      setTimeout(() => ls.remove(), 350); // match the shortened CSS transition
+    }, 350); // just long enough to show the brand, feel instant
   });
 
-});
-
-  /* ---- Sticky Navbar ---- */
-  let ticking = false;
-
-$(window).on('scroll', function () {
-
-  if (!ticking) {
-
-    window.requestAnimationFrame(function () {
-
-      if ($(window).scrollTop() > 60) {
-        $('.royal-navbar').addClass('scrolled');
-        $('.scroll-top-btn').addClass('show');
-      } else {
-        $('.royal-navbar').removeClass('scrolled');
-        $('.scroll-top-btn').removeClass('show');
-      }
-
-      revealOnScroll();
-      startCounters();
-
-      ticking = false;
-
-    });
-
-    ticking = true;
-  }
-
-});
-  });
+  /* ---- Sticky Navbar — throttled via rAF for 60fps smoothness ---- */
+  var scrollTicking = false;
+  window.addEventListener('scroll', function () {
+    if (!scrollTicking) {
+      requestAnimationFrame(function () {
+        var st = window.pageYOffset || document.documentElement.scrollTop;
+        if (st > 60) {
+          $('.royal-navbar').addClass('scrolled');
+          $('.scroll-top-btn').addClass('show');
+        } else {
+          $('.royal-navbar').removeClass('scrolled');
+          $('.scroll-top-btn').removeClass('show');
+        }
+        revealOnScroll();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
 
   /* ---- Scroll To Top ---- */
   $('.scroll-top-btn').on('click', function () {
@@ -59,29 +48,31 @@ $(window).on('scroll', function () {
     }
   });
 
-  /* ---- Floating Particles Canvas ---- */
+  /* ---- Floating Particles Canvas — skip on mobile for performance ---- */
   const canvas = document.getElementById('particles-canvas');
-  if (canvas) {
+  if (canvas && window.innerWidth > 768) {
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
     const particles = [];
-    for (let i = 0; i < 70; i++) {
+    for (let i = 0; i < 40; i++) {   // reduced from 70 → 40
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        r: Math.random() * 1.5 + 0.3,
-        dx: (Math.random() - 0.5) * 0.4,
-        dy: -Math.random() * 0.5 - 0.1,
-        opacity: Math.random() * 0.6 + 0.1,
+        r: Math.random() * 1.2 + 0.3,
+        dx: (Math.random() - 0.5) * 0.3,
+        dy: -Math.random() * 0.4 - 0.1,
+        opacity: Math.random() * 0.5 + 0.1,
         color: Math.random() > 0.5 ? '255,215,0' : '192,192,192'
       });
     }
 
+    let rafId;
     function drawParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${p.color},${p.opacity})`;
@@ -91,56 +82,71 @@ $(window).on('scroll', function () {
         if (p.y < -5) { p.y = canvas.height + 5; p.x = Math.random() * canvas.width; }
         if (p.x < -5) p.x = canvas.width + 5;
         if (p.x > canvas.width + 5) p.x = -5;
-      });
-      setTimeout(() => {
-  requestAnimationFrame(drawParticles);
-}, 35);
+      }
+      rafId = requestAnimationFrame(drawParticles);
     }
     drawParticles();
 
+    // Pause particles when tab is hidden to save resources
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) cancelAnimationFrame(rafId);
+      else drawParticles();
+    });
+
+    let resizeTimer;
     window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }, 200);
+    }, { passive: true });
+  } else if (canvas) {
+    canvas.style.display = 'none'; // hide canvas entirely on mobile
   }
 
-  /* ---- Scroll Reveal ---- */
-  function revealOnScroll() {
-    $('.fade-in-up').each(function () {
-      const top = $(this).offset().top;
-      const windowBottom = $(window).scrollTop() + $(window).height();
-      if (windowBottom > top + 60) {
-        $(this).addClass('visible');
-      }
-    });
-  }
-  revealOnScroll();
+  /* ---- Scroll Reveal — IntersectionObserver (zero scroll-event cost) ---- */
+  function revealOnScroll() { /* kept as no-op; real work done by observer below */ }
 
-  /* ---- Animated Counters ---- */
-  let countersStarted = false;
-  function startCounters() {
-    if (countersStarted) return;
-    const statsSection = $('.stats-section');
-    if (statsSection.length === 0) return;
-    const sectionTop = statsSection.offset().top;
-    const windowBottom = $(window).scrollTop() + $(window).height();
-    if (windowBottom > sectionTop + 100) {
-      countersStarted = true;
-      $('.stat-number[data-target]').each(function () {
-        const $el = $(this);
-        const target = parseInt($el.data('target'));
-        const suffix = $el.data('suffix') || '';
-        $({ val: 0 }).animate({ val: target }, {
-          duration: 1800,
-          easing: 'swing',
-          step: function () { $el.text(Math.floor(this.val) + suffix); },
-          complete: function () { $el.text(target + suffix); }
-        });
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target); // fire once, then stop watching
+        }
       });
-    }
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in-up').forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    // Fallback for older browsers
+    document.querySelectorAll('.fade-in-up').forEach(el => el.classList.add('visible'));
   }
-  $(window).on('scroll', startCounters);
-  startCounters();
+
+  /* ---- Animated Counters — IntersectionObserver ---- */
+  const statsSection = document.querySelector('.stats-section');
+  if (statsSection) {
+    const counterObserver = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        counterObserver.disconnect();
+        $('.stat-number[data-target]').each(function () {
+          const $el = $(this);
+          const target = parseInt($el.data('target'));
+          const suffix = $el.data('suffix') || '';
+          $({ val: 0 }).animate({ val: target }, {
+            duration: 1600,
+            easing: 'swing',
+            step: function () { $el.text(Math.floor(this.val) + suffix); },
+            complete: function () { $el.text(target + suffix); }
+          });
+        });
+      }
+    }, { threshold: 0.3 });
+    counterObserver.observe(statsSection);
+  }
 
   /* ---- Menu Filter Tabs ---- */
   $(document).on('click', '.filter-tab', function () {
@@ -216,7 +222,7 @@ $(window).on('scroll', function () {
         <div class="text-center py-5">
           <i class="fas fa-shopping-cart" style="font-size:3rem;color:var(--gold);opacity:0.3;"></i>
           <p class="mt-3" style="font-family:var(--font-heading);color:var(--silver);letter-spacing:0.1em;">Your royal cart is empty</p>
-          <a href="index.html" class="btn-royal-gold mt-3" style="display:inline-block;">Browse Our Menu</a>
+          <a href="../index.html" class="btn-royal-gold mt-3" style="display:inline-block;">Browse Our Menu</a>
         </div>
       `);
       updateCartTotal();
@@ -340,7 +346,7 @@ $(window).on('scroll', function () {
 
     if (valid) {
       showToast('Welcome back to Royal Feast! 👑', 'fa-crown');
-      setTimeout(() => window.location.href = 'index.html', 1200);
+      setTimeout(() => window.location.href = '../index.html', 1200);
     }
   });
 
@@ -474,3 +480,4 @@ $(window).on('scroll', function () {
     }
   });
 
+});
