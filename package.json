@@ -1,0 +1,10 @@
+{
+  "name": "solara-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start:all": "node tools/start-all.js",
+    "start:dreamdrive": "npm --prefix dreamdrive run server",
+    "start:solara": "npm --prefix SOLARA run server"
+  }
+}

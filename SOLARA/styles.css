@@ -1,0 +1,15 @@
+:root{--gold:#C9A84C;--bg:#070707;--bg2:#0d0d0d;--txt:#f5f0e8;--txt2:#aea49a}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font-family:Inter,system-ui,Arial;margin:0}
+a{color:var(--gold)}
+/* keep minimal theme overrides — full styles preserved in original file */
+.nav-logo{font-family:Playfair Display,serif}
+.btn-g{background:var(--gold);color:#000;padding:12px 20px;border:none}
+.btn-o{border:1px solid rgba(255,255,255,.06);padding:12px 20px;color:var(--txt)}
+.fleet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.ccard{background:#0f0f0f;border:1px solid rgba(255,255,255,.04)}
+.cimg img{width:100%;height:220px;object-fit:cover}
+/* layout helpers */
+section{padding:56px 5vw}
+/* dark aesthetic adjustments */
+header,nav,footer{background:transparent}

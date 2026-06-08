@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const bcrypt = require('bcryptjs');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 const Car = require('./models/Car');
 const User = require('./models/User');
 
@@ -10,6 +13,35 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/dreamdrive';
+const uploadDir = path.join(__dirname, 'uploads');
+
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, uploadDir),
+  filename: (req, file, cb) => {
+    const timestamp = Date.now();
+    const safeName = file.originalname.replace(/[^a-zA-Z0-9.-]/g, '-');
+    const ext = path.extname(safeName);
+    const base = path.basename(safeName, ext);
+    cb(null, `${base}-${timestamp}${ext}`);
+  }
+});
+
+const upload = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    if (!file.mimetype.startsWith('image/')) {
+      return cb(new Error('Only image uploads are allowed.'), false);
+    }
+    cb(null, true);
+  }
+});
+
+app.use(express.json());
+app.use('/uploads', express.static(uploadDir));
 
 mongoose.set('strictQuery', false);
 
@@ -19,8 +51,6 @@ mongoose.connect(mongoUri)
     console.error('MongoDB connection error:', error);
     process.exit(1);
   });
-
-app.use(express.json());
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -45,12 +75,59 @@ app.get('/api/cars', async (req, res) => {
   }
 });
 
-app.post('/api/cars', async (req, res) => {
+app.post('/api/cars', upload.single('image'), async (req, res) => {
   try {
-    const car = new Car(req.body);
+    const {
+      brand,
+      model,
+      category,
+      price,
+      rentalPrice,
+      color,
+      year,
+      acceleration,
+      maxSpeed,
+      power,
+      fuel,
+      seats,
+      rating,
+      reviews,
+      featured,
+    } = req.body;
+
+    if (!brand || !model || !price || !rentalPrice) {
+      return res.status(400).json({ error: 'Brand, model, price, and rentalPrice are required.' });
+    }
+
+    if (!req.file) {
+      return res.status(400).json({ error: 'Car image upload is required.' });
+    }
+
+    const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+
+    const car = new Car({
+      brand,
+      model,
+      category: category || 'sports',
+      price: Number(price),
+      rentalPrice: Number(rentalPrice),
+      image: imageUrl,
+      color,
+      year: Number(year) || undefined,
+      acceleration,
+      maxSpeed,
+      power,
+      fuel,
+      seats: Number(seats) || undefined,
+      rating: Number(rating) || undefined,
+      reviews: Number(reviews) || undefined,
+      featured: featured === 'true' || featured === 'on' || false,
+    });
+
     await car.save();
     res.status(201).json(car);
   } catch (error) {
+    console.error('Car save error:', error);
     res.status(400).json({ error: 'Failed to save car' });
   }
 });

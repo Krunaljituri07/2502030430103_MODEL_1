@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Serenity — Meditation & Wellness</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS — Midnight Luxury Palette
+═══════════════════════════════════════════════ */
+:root{
+  --ink:#0D0F14;--ink2:#13161D;--ink3:#1A1E28;--ink4:#222736;
+  --glass:rgba(255,255,255,.04);--glass-b:rgba(255,255,255,.07);--glass-c:rgba(255,255,255,.11);
+  --gold:#C9A84C;--gold-lt:#E8C97A;--gold-dk:#9A7033;--gold-glow:rgba(201,168,76,.18);
+  --sage:#7BA882;--sage-lt:#A8C9AE;--sage-glow:rgba(123,168,130,.14);
+  --mist:#8EA8C0;
+  --t1:#F0EDE6;--t2:#9A9590;--t3:#5A5650;--t4:#3A3730;
+  --bg:#0D0F14;--surface:#13161D;--surface2:#1A1E28;
+  --brd:rgba(255,255,255,.07);--brd-g:rgba(201,168,76,.22);
+  --shd:0 4px 32px rgba(0,0,0,.5);--shd-lg:0 20px 72px rgba(0,0,0,.7);--shd-g:0 8px 40px rgba(201,168,76,.14);
+  --r:24px;--r2:16px;--r3:12px;
+  --fd:'Playfair Display',Georgia,serif;--fb:'Jost',system-ui,sans-serif;
+  --ease:cubic-bezier(.4,0,.2,1);--ease-o:cubic-bezier(0,0,.2,1);
+  --t:.35s var(--ease);
+}
+.light{
+  --ink:#F8F6F1;--ink2:#F0EDE6;--ink3:#E8E3DA;--ink4:#DDD8CE;
+  --glass:rgba(0,0,0,.025);--glass-b:rgba(0,0,0,.05);--glass-c:rgba(0,0,0,.08);
+  --gold:#9A7033;--gold-lt:#C9A84C;--gold-dk:#7A5520;--gold-glow:rgba(154,112,51,.12);
+  --sage:#4A8454;--sage-lt:#7BA882;--sage-glow:rgba(74,132,84,.1);
+  --t1:#1A1814;--t2:#5C5650;--t3:#9C9690;--t4:#C8C3BC;
+  --bg:#F8F6F1;--surface:#FFFEFB;--surface2:#F0EDE6;
+  --brd:rgba(0,0,0,.07);--brd-g:rgba(154,112,51,.22);
+  --shd:0 4px 24px rgba(0,0,0,.08);--shd-lg:0 16px 48px rgba(0,0,0,.14);--shd-g:0 8px 32px rgba(154,112,51,.1);
+}
+
+/* ══ RESET */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--t1);overflow-x:hidden;transition:background .5s,color .5s;-webkit-font-smoothing:antialiased;}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--ink4);border-radius:3px}
+h1,h2,h3{font-family:var(--fd);font-weight:400;line-height:1.15;letter-spacing:-.01em}
+h1{font-size:clamp(2.8rem,7vw,5.8rem)}h2{font-size:clamp(2rem,4vw,3.2rem)}h3{font-size:1.6rem}
+p{line-height:1.8;color:var(--t2);font-weight:300}em{font-style:italic;color:var(--gold-lt)}
+.container{max-width:1240px;margin:0 auto;padding:0 40px}
+.section{padding:120px 0}
+
+/* Grain */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.35;}
+
+/* ══ BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border:none;border-radius:100px;cursor:pointer;font-family:var(--fb);font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:var(--t);position:relative;overflow:hidden;text-decoration:none;}
+.btn::after{content:'';position:absolute;inset:0;background:white;opacity:0;transition:opacity .2s}
+.btn:hover::after{opacity:.05}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-dk));color:#0D0F14;box-shadow:0 4px 20px var(--gold-glow);}
+.btn-gold:hover{background:linear-gradient(135deg,var(--gold-lt),var(--gold));box-shadow:0 8px 32px rgba(201,168,76,.32);transform:translateY(-1px)}
+.btn-outline{background:transparent;border:1px solid var(--brd-g);color:var(--t2);}
+.btn-outline:hover{border-color:var(--gold-lt);color:var(--gold-lt);background:var(--gold-glow)}
+.btn-glass{background:var(--glass-b);border:1px solid var(--brd);color:var(--t2);backdrop-filter:blur(8px);}
+.btn-glass:hover{background:var(--glass-c);color:var(--t1)}
+.btn-sm{padding:9px 22px;font-size:.75rem}
+.icon-btn{width:44px;height:44px;border-radius:50%;padding:0;display:inline-flex;align-items:center;justify-content:center;background:var(--glass-b);border:1px solid var(--brd);color:var(--t2);cursor:pointer;font-size:1.1rem;transition:var(--t);}
+.icon-btn:hover{background:var(--glass-c);color:var(--gold-lt);border-color:var(--brd-g)}
+
+/* ══ HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:200;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;transition:var(--t);}
+header.scrolled{background:rgba(13,15,20,.88);backdrop-filter:blur(24px) saturate(1.5);border-bottom:1px solid var(--brd);padding:14px 40px;}
+.light header.scrolled{background:rgba(248,246,241,.9)}
+.logo{font-family:var(--fd);font-size:1.75rem;font-weight:500;color:var(--t1);text-decoration:none;display:flex;align-items:center;gap:10px;letter-spacing:.01em}
+.logo-gem{width:30px;height:30px;position:relative;flex-shrink:0}
+.logo-gem::before,.logo-gem::after{content:'';position:absolute;border-radius:50%;background:linear-gradient(135deg,var(--gold-lt),var(--gold-dk))}
+.logo-gem::before{width:20px;height:20px;top:0;left:0}
+.logo-gem::after{width:13px;height:13px;bottom:0;right:0;opacity:.6}
+nav{display:flex;gap:2px}
+nav a{padding:8px 18px;border-radius:100px;text-decoration:none;color:var(--t3);font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;transition:var(--t);}
+nav a:hover{background:var(--glass-b);color:var(--t1)}
+nav a.active{background:var(--glass-b);color:var(--gold-lt)}
+.hdr-right{display:flex;gap:10px;align-items:center}
+
+/* ══ HERO */
+#home{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:90px}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.orb1{width:700px;height:700px;background:radial-gradient(circle,rgba(123,168,130,.22),transparent 70%);top:-100px;right:-180px;opacity:.5}
+.orb2{width:480px;height:480px;background:radial-gradient(circle,rgba(154,112,51,.18),transparent 70%);bottom:-60px;left:-80px;opacity:.4}
+.orb3{width:360px;height:360px;background:radial-gradient(circle,rgba(142,168,192,.15),transparent 70%);top:35%;right:8%;opacity:.35}
+.hero-content{position:relative;z-index:2;max-width:740px}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;background:var(--glass-b);border:1px solid var(--brd-g);border-radius:100px;padding:8px 20px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:36px;animation:fadeUp .9s var(--ease) both;}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero h1{animation:fadeUp .9s .1s var(--ease) both;color:var(--t1)}
+.hero h1 .italic-line{display:block;font-style:italic;color:var(--gold-lt)}
+.hero-sub{font-size:1.1rem;line-height:1.85;margin:28px 0 44px;max-width:530px;animation:fadeUp .9s .2s var(--ease) both}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .9s .3s var(--ease) both}
+.hero-stats{display:flex;gap:52px;margin-top:72px;padding-top:48px;border-top:1px solid var(--brd);animation:fadeUp .9s .45s var(--ease) both}
+.hstat-n{font-family:var(--fd);font-size:2.4rem;font-weight:500;color:var(--t1);line-height:1;letter-spacing:-.02em}
+.hstat-n span{color:var(--gold-lt)}
+.hstat-l{font-size:.7rem;color:var(--t3);margin-top:6px;letter-spacing:.1em;text-transform:uppercase}
+.hero-visual{position:absolute;right:-70px;top:50%;transform:translateY(-50%);width:560px;height:560px;pointer-events:none;animation:fadeUp .9s .5s var(--ease) both}
+.hv-wrap{width:100%;height:100%;position:relative}
+.hv-ring{position:absolute;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
+.hv-r1{width:130px;height:130px;border:1px solid rgba(201,168,76,.6);animation:spn 18s linear infinite}
+.hv-r2{width:240px;height:240px;border:1px solid rgba(201,168,76,.25);animation:spn 32s linear infinite reverse}
+.hv-r3{width:360px;height:360px;border:1px solid rgba(123,168,130,.18);animation:spn 48s linear infinite}
+.hv-r4{width:480px;height:480px;border:1px solid rgba(123,168,130,.09);animation:spn 66s linear infinite reverse}
+.hv-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:86px;height:86px;border-radius:50%;background:radial-gradient(circle,var(--gold-lt),var(--gold-dk));box-shadow:0 0 60px rgba(201,168,76,.45),0 0 120px rgba(201,168,76,.15);animation:breathe 5s ease-in-out infinite}
+@keyframes spn{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1);box-shadow:0 0 60px rgba(201,168,76,.4)}50%{transform:translate(-50%,-50%) scale(1.18);box-shadow:0 0 100px rgba(201,168,76,.65)}}
+
+/* ══ SECTION HEADER */
+.section-header{margin-bottom:20px}
+.section-label{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.section-label::before{content:'';width:24px;height:1px;background:var(--gold);opacity:.7}
+.section-desc{max-width:540px;margin-top:16px;font-size:1.05rem;color:var(--t2)}
+
+/* ══ FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px;border:1px solid var(--brd);border-radius:var(--r);overflow:hidden}
+.feature-card{background:var(--surface);padding:44px 36px;transition:var(--t);position:relative;overflow:hidden;border-right:1px solid var(--brd);border-bottom:1px solid var(--brd)}
+.feature-card:nth-child(3n){border-right:none}
+.feature-card:nth-last-child(-n+3){border-bottom:none}
+.feature-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 120% 120% at 0% 0%,var(--gold-glow),transparent 60%);opacity:0;transition:opacity .4s}
+.feature-card:hover{background:var(--ink3)}
+.feature-card:hover::before{opacity:1}
+.feature-card:hover .fic{background:linear-gradient(135deg,var(--gold),var(--gold-dk));color:#0D0F14;box-shadow:0 8px 24px var(--gold-glow);border-color:transparent}
+.fic{width:52px;height:52px;border-radius:var(--r3);background:var(--glass-b);border:1px solid var(--brd);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:24px;transition:var(--t)}
+.feature-card h3{font-size:1.15rem;margin-bottom:10px;color:var(--t1);font-weight:500}
+.feature-card p{font-size:.88rem;line-height:1.7;color:var(--t2)}
+
+/* ══ MEDITATION */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px}
+.filter-pill{padding:8px 22px;border-radius:100px;border:1px solid var(--brd);background:transparent;cursor:pointer;font-family:var(--fb);font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--t3);transition:var(--t)}
+.filter-pill:hover{border-color:var(--brd-g);color:var(--t2)}
+.filter-pill.active{background:linear-gradient(135deg,var(--gold),var(--gold-dk));border-color:transparent;color:#0D0F14;box-shadow:0 4px 16px var(--gold-glow)}
+.med-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.med-card{background:var(--surface);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:var(--t)}
+.med-card:hover{border-color:var(--brd-g);transform:translateY(-4px);box-shadow:var(--shd-g)}
+.med-thumb{height:170px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.med-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.25))}
+.bg1{background:linear-gradient(135deg,#2A4A3A,#1A3328)}
+.bg2{background:linear-gradient(135deg,#1E2E44,#111D30)}
+.bg3{background:linear-gradient(135deg,#3A2820,#251612)}
+.bg4{background:linear-gradient(135deg,#2A2040,#1A1228)}
+.bg5{background:linear-gradient(135deg,#3A3018,#261F08)}
+.bg6{background:linear-gradient(135deg,#1E3828,#0E2018)}
+.med-body{padding:22px}
+.med-body h3{font-size:1.1rem;font-family:var(--fd);font-weight:500;color:var(--t1);margin-bottom:6px}
+.med-body p{font-size:.82rem;color:var(--t3)}
+.med-foot{display:flex;align-items:center;justify-content:space-between;margin-top:18px}
+.dur-badge{font-size:.72rem;padding:4px 14px;border-radius:100px;background:var(--glass-b);border:1px solid var(--brd);color:var(--t2);font-weight:500;letter-spacing:.04em}
+.play-btn{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dk));color:#0D0F14;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:var(--t);box-shadow:0 4px 12px var(--gold-glow)}
+.play-btn:hover{transform:scale(1.12);box-shadow:0 6px 20px rgba(201,168,76,.4)}
+
+/* ══ BREATHING */
+.breath-wrap{background:var(--surface);border:1px solid var(--brd);border-radius:32px;padding:80px 60px;text-align:center;position:relative;overflow:hidden;margin:60px 0}
+.breath-wrap::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(var(--sage-glow),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.breath-ring-wrap{position:relative;width:220px;height:220px;margin:0 auto 44px}
+.br-outer{width:220px;height:220px;border-radius:50%;border:1.5px solid rgba(123,168,130,.25);position:absolute;top:0;left:0;transition:transform 4s ease-in-out}
+.br-inner{width:110px;height:110px;border-radius:50%;background:radial-gradient(var(--sage-lt),var(--sage));position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transition:transform 4s ease-in-out,box-shadow 4s ease-in-out;box-shadow:0 0 48px rgba(123,168,130,.35)}
+.br-count{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:2.8rem;font-weight:400;color:var(--t1);z-index:2;text-align:center;line-height:1}
+.br-phase{font-size:.72rem;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:4px}
+.br-text{font-family:var(--fd);font-size:1.9rem;color:var(--t1);margin:0 0 12px;font-style:italic}
+.br-sub{font-size:.88rem;color:var(--t3);margin-bottom:44px;letter-spacing:.02em}
+.br-controls{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.psel{padding:12px 22px;border-radius:100px;border:1px solid var(--brd-g);background:var(--glass-b);color:var(--t2);font-family:var(--fb);font-size:.78rem;font-weight:500;cursor:pointer;outline:none;transition:var(--t);letter-spacing:.04em}
+.psel:hover{border-color:var(--gold);color:var(--t1)}
+.psel option{background:var(--ink3);color:var(--t1)}
+
+/* ══ SOUNDS */
+.sound-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.sound-card{background:var(--surface);border:1.5px solid var(--brd);border-radius:var(--r);padding:30px 26px;cursor:pointer;transition:var(--t);position:relative;overflow:hidden}
+.sound-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%,var(--sage-glow),transparent 70%);opacity:0;transition:opacity .4s}
+.sound-card.active{border-color:var(--sage-lt);background:var(--ink3)}
+.sound-card.active::before{opacity:1}
+.sound-card:hover:not(.active){border-color:var(--brd-g);transform:translateY(-2px)}
+.se{font-size:2.4rem;margin-bottom:18px;display:block}
+.sound-card h3{font-size:.95rem;font-family:var(--fd);font-weight:500;color:var(--t1);margin-bottom:8px}
+.sound-card p{font-size:.8rem;color:var(--t3);margin-bottom:16px}
+.vol-row{display:flex;justify-content:space-between;font-size:.72rem;color:var(--t3);margin-bottom:6px;letter-spacing:.04em}
+.vslider{width:100%;appearance:none;height:3px;border-radius:2px;background:var(--ink4);outline:none;cursor:pointer}
+.vslider::-webkit-slider-thumb{appearance:none;width:14px;height:14px;border-radius:50%;background:var(--sage-lt);cursor:pointer;transition:transform .2s;box-shadow:0 2px 8px rgba(123,168,130,.3)}
+.vslider::-webkit-slider-thumb:hover{transform:scale(1.3)}
+.np-bar-wrap{display:none;background:var(--surface);border:1px solid var(--brd);border-radius:var(--r2);padding:20px 28px;margin-top:24px;align-items:center;gap:20px}
+.np-bar-wrap.show{display:flex}
+.np-wave{display:flex;align-items:flex-end;gap:3px;height:28px;flex-shrink:0}
+.np-wbar{width:3px;border-radius:2px;background:var(--sage-lt);animation:wave 1s ease-in-out infinite}
+.np-wbar:nth-child(1){height:40%}.np-wbar:nth-child(2){animation-delay:.1s;height:70%}.np-wbar:nth-child(3){animation-delay:.2s;height:90%}.np-wbar:nth-child(4){animation-delay:.15s;height:60%}.np-wbar:nth-child(5){animation-delay:.05s;height:50%}
+.np-info2{flex:1}
+.np-nm{font-size:.92rem;font-weight:500;color:var(--t1)}
+.np-mt{font-size:.78rem;color:var(--t3);margin-top:2px}
+.preset-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+
+/* ══ DASHBOARD */
+.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.stat-card{background:var(--surface);border:1px solid var(--brd);border-radius:var(--r);padding:28px 24px;position:relative;overflow:hidden;transition:var(--t)}
+.stat-card:hover{border-color:var(--brd-g);box-shadow:var(--shd-g)}
+.stat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.stat-card:hover::after{opacity:1}
+.big-num{font-family:var(--fd);font-size:3rem;font-weight:400;color:var(--t1);line-height:1;margin-bottom:8px}
+.stat-lbl{font-size:.7rem;color:var(--t3);letter-spacing:.1em;text-transform:uppercase}
+.streak-row{display:flex;gap:5px;margin-top:18px;flex-wrap:wrap}
+.spip{width:22px;height:7px;border-radius:4px;background:var(--ink4);transition:var(--t)}
+.spip.on{background:linear-gradient(90deg,var(--gold),var(--gold-lt))}
+.mood-panel{background:var(--surface);border:1px solid var(--brd);border-radius:var(--r);padding:28px;margin-top:16px}
+.mood-panel h3{font-family:var(--fb);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:22px}
+.mood-row{display:flex;gap:10px}
+.mood-btn{flex:1;padding:16px 8px;border-radius:var(--r3);border:1px solid var(--brd);background:transparent;cursor:pointer;text-align:center;transition:var(--t)}
+.mood-btn:hover{border-color:var(--brd-g);background:var(--glass-b)}
+.mood-btn.sel{background:linear-gradient(135deg,var(--gold-glow),transparent);border-color:var(--gold)}
+.moji{font-size:1.5rem;display:block;margin-bottom:6px}
+.mlbl{font-size:.66rem;color:var(--t3);letter-spacing:.05em;font-weight:600;text-transform:uppercase}
+.mood-btn.sel .mlbl{color:var(--gold-lt)}
+.chart-panel{background:var(--surface);border:1px solid var(--brd);border-radius:var(--r);padding:28px;margin-top:16px}
+.chart-panel h3{font-family:var(--fb);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:28px}
+.cbars{display:flex;align-items:flex-end;gap:10px;height:130px}
+.bwrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
+.cbar{width:100%;border-radius:6px 6px 0 0;background:var(--ink4);transition:height .6s var(--ease);min-height:4px}
+.cbar.today{background:linear-gradient(to top,var(--gold-dk),var(--gold-lt))}
+.bday{font-size:.66rem;color:var(--t3);letter-spacing:.07em;text-transform:uppercase}
+
+/* ══ TESTIMONIALS */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px}
+.test-card{background:var(--surface);border:1px solid var(--brd);border-radius:var(--r);padding:36px;transition:var(--t)}
+.test-card:hover{border-color:var(--brd-g);box-shadow:var(--shd-g)}
+.tqm{font-family:var(--fd);font-size:5rem;line-height:.5;color:var(--gold-dk);display:block;margin-bottom:20px;opacity:.5}
+.ttext{font-family:var(--fd);font-size:1.05rem;font-style:italic;color:var(--t1);line-height:1.7;margin-bottom:28px}
+.tauth{display:flex;align-items:center;gap:14px}
+.tavtr{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;border:1px solid var(--brd)}
+.tname{font-size:.88rem;font-weight:500;color:var(--t1)}
+.trole{font-size:.75rem;color:var(--t3);margin-top:2px}
+
+/* ══ CTA */
+.cta-box{background:linear-gradient(135deg,#1A2318,#0F1A12);border:1px solid rgba(123,168,130,.2);border-radius:32px;padding:80px 60px;text-align:center;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 90% at 50% 50%,rgba(123,168,130,.07),transparent);pointer-events:none}
+.cta-box>*{position:relative}
+.cta-box h2{color:var(--t1);margin-bottom:16px}
+.cta-box p{color:var(--t2);font-size:1.05rem;max-width:480px;margin:0 auto 44px}
+
+/* ══ FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--brd);padding:64px 0 40px}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px}
+.footer-brand p{font-size:.85rem;max-width:240px;line-height:1.8;margin-top:14px}
+.footer-col h4{font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--t2);margin-bottom:20px}
+.footer-col a{display:block;font-size:.85rem;color:var(--t3);text-decoration:none;margin-bottom:12px;transition:color .2s}
+.footer-col a:hover{color:var(--gold-lt)}
+.footer-btm{border-top:1px solid var(--brd);margin-top:52px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:.76rem;color:var(--t3)}
+
+/* ══ MODAL */
+.overlay{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.72);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:20px}
+.overlay.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--brd);border-radius:28px;padding:52px 48px;width:100%;max-width:460px;box-shadow:var(--shd-lg);animation:modalIn .4s var(--ease) both;position:relative}
+.mx{position:absolute;top:20px;right:20px;width:38px;height:38px;border:1px solid var(--brd);border-radius:50%;background:var(--glass-b);cursor:pointer;font-size:.9rem;color:var(--t3);transition:var(--t);display:flex;align-items:center;justify-content:center}
+.mx:hover{background:var(--glass-c);color:var(--t1);border-color:var(--brd-g)}
+.modal h2{font-size:2.2rem;margin-bottom:8px}
+.modal-sub{font-size:.88rem;color:var(--t3);margin-bottom:36px}
+.tab-row{display:flex;background:var(--ink3);border-radius:100px;padding:4px;margin-bottom:32px;border:1px solid var(--brd)}
+.tab{flex:1;padding:10px;border:none;border-radius:100px;background:transparent;cursor:pointer;font-family:var(--fb);font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);transition:var(--t)}
+.tab.on{background:var(--surface2);color:var(--t1);box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.fg{margin-bottom:20px}
+.fg label{display:block;font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--t2);margin-bottom:8px}
+.fi{width:100%;padding:14px 18px;border:1px solid var(--brd);border-radius:var(--r3);background:var(--ink3);color:var(--t1);font-family:var(--fb);font-size:.9rem;transition:var(--t);outline:none}
+.fi:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-glow);background:var(--ink4)}
+.fi.err{border-color:var(--sage-lt);animation:shake .4s var(--ease)}
+.ferr{font-size:.74rem;color:var(--sage-lt);margin-top:6px;display:none}
+.ferr.show{display:block}
+.fsub{width:100%;padding:16px;border:none;border-radius:var(--r2);background:linear-gradient(135deg,var(--gold),var(--gold-dk));color:#0D0F14;font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;transition:var(--t);margin-top:8px;box-shadow:0 4px 20px var(--gold-glow)}
+.fsub:hover{background:linear-gradient(135deg,var(--gold-lt),var(--gold));transform:translateY(-1px)}
+.fsub:active{transform:scale(.98)}
+.mfoot{text-align:center;margin-top:20px;font-size:.8rem;color:var(--t3)}
+.mfoot a{color:var(--gold-lt);text-decoration:none}
+
+/* ══ TOAST */
+.toast-tray{position:fixed;bottom:32px;right:32px;z-index:600;display:flex;flex-direction:column;gap:10px}
+.toast{background:var(--surface);border:1px solid var(--brd);border-radius:var(--r3);padding:14px 20px;box-shadow:var(--shd-lg);display:flex;align-items:center;gap:12px;font-size:.85rem;max-width:320px;animation:toastIn .3s var(--ease);backdrop-filter:blur(16px)}
+.toast.ok .ti{color:var(--gold-lt)}
+.toast.er .ti{color:var(--sage-lt)}
+.ti{font-size:1rem;flex-shrink:0}
+.toast-out{animation:toastOut .3s var(--ease) forwards}
+
+/* ══ PLAYER */
+.player{position:fixed;bottom:0;left:0;right:0;z-index:150;background:rgba(13,15,20,.96);backdrop-filter:blur(24px);border-top:1px solid var(--brd-g);padding:16px 40px;display:none;align-items:center;gap:24px;transform:translateY(100%);transition:transform .5s var(--ease-o)}
+.player.show{display:flex;transform:translateY(0)}
+.light .player{background:rgba(248,246,241,.96)}
+.pp-art{width:48px;height:48px;border-radius:var(--r3);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;background:linear-gradient(135deg,var(--gold-dk),var(--ink4));border:1px solid var(--brd-g)}
+.pp-info{flex:1;min-width:0}
+.pp-nm{font-size:.9rem;font-weight:500;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp-mt{font-size:.75rem;color:var(--t3);margin-top:2px}
+.pp-prog{flex:2;max-width:340px}
+.pp-track{height:3px;background:var(--ink4);border-radius:2px;cursor:pointer;position:relative}
+.pp-fill{height:100%;background:linear-gradient(90deg,var(--gold-dk),var(--gold-lt));border-radius:2px;width:0%;transition:width .5s linear}
+.pp-times{display:flex;justify-content:space-between;font-size:.7rem;color:var(--t3);margin-top:5px}
+.pp-btns{display:flex;gap:12px;align-items:center}
+.pp-play{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dk));color:#0D0F14;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:var(--t);box-shadow:0 4px 16px var(--gold-glow)}
+.pp-play:hover{transform:scale(1.07)}
+.pp-x{width:36px;height:36px;border-radius:50%;background:var(--glass-b);border:1px solid var(--brd);color:var(--t3);cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:var(--t)}
+.pp-x:hover{background:var(--glass-c);color:var(--t1)}
+
+/* ══ ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes modalIn{from{opacity:0;transform:scale(.94) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes toastOut{to{opacity:0;transform:translateY(10px)}}
+@keyframes wave{0%,100%{height:30%}50%{height:100%}}
+
+/* ══ REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ══ RESPONSIVE */
+@media(max-width:960px){
+  .features-grid{grid-template-columns:1fr 1fr}
+  .feature-card:nth-child(3n){border-right:1px solid var(--brd)}
+  .feature-card:nth-child(2n){border-right:none}
+  .dash-grid,.test-grid,.sound-grid{grid-template-columns:1fr 1fr}
+  .hero-visual{display:none}
+  nav{display:none}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:36px}
+}
+@media(max-width:640px){
+  .container{padding:0 20px}
+  .section{padding:80px 0}
+  .features-grid,.dash-grid,.test-grid,.sound-grid{grid-template-columns:1fr}
+  .feature-card:nth-child(n){border-right:none}
+  .breath-wrap{padding:48px 24px}
+  header{padding:16px 20px}
+  header.scrolled{padding:12px 20px}
+  .modal{padding:36px 24px}
+  .hero-stats{gap:28px}
+  .hstat-n{font-size:1.8rem}
+  .mood-row{flex-wrap:wrap}
+  .mood-btn{min-width:calc(33% - 8px)}
+  .cta-box{padding:56px 32px}
+  .player{padding:14px 20px}
+  .footer-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <a class="logo" href="#home"><div class="logo-gem"></div>Serenity</a>
+  <nav id="main-nav">
+    <a href="#home" class="active">Home</a>
+    <a href="#meditation">Meditate</a>
+    <a href="#mindfulness">Breathe</a>
+    <a href="#relax">Sounds</a>
+    <a href="#dashboard">Journey</a>
+  </nav>
+  <div class="hdr-right">
+    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+    <button class="btn btn-glass btn-sm" onclick="openModal('login')">Sign in</button>
+    <button class="btn btn-gold btn-sm" onclick="openModal('signup')">Begin</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge"><div class="dot"></div>New — Daily Guided Sessions Live</div>
+      <h1>Find your<br><span class="italic-line">stillness.</span></h1>
+      <p class="hero-sub">A sanctuary for the modern mind. Guided meditations, breathing rituals, and ambient soundscapes — crafted for deep rest and quiet clarity.</p>
+      <div class="hero-cta">
+        <button class="btn btn-gold" onclick="openModal('signup')">Begin for free</button>
+        <button class="btn btn-outline" onclick="smoothTo('meditation')">Explore sessions</button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hstat-n">12<span>k+</span></div>
+          <div class="hstat-l">Daily practitioners</div>
+        </div>
+        <div>
+          <div class="hstat-n">200<span>+</span></div>
+          <div class="hstat-l">Guided sessions</div>
+        </div>
+        <div>
+          <div class="hstat-n">4.9<span>★</span></div>
+          <div class="hstat-l">Average rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hv-wrap">
+      <div class="hv-ring hv-r1"></div>
+      <div class="hv-ring hv-r2"></div>
+      <div class="hv-ring hv-r3"></div>
+      <div class="hv-ring hv-r4"></div>
+      <div class="hv-core"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Why Serenity</div>
+      <h2>Everything you need<br>to thrive within</h2>
+      <p class="section-desc">From guided sessions to sleep rituals — a complete toolkit for your mental and emotional wellbeing.</p>
+    </div>
+    <div class="features-grid reveal">
+      <div class="feature-card"><div class="fic">🧘</div><h3>Guided Meditations</h3><p>Curated sessions for every mood — from 5-minute stress breaks to deep 30-minute journeys.</p></div>
+      <div class="feature-card"><div class="fic">🌬️</div><h3>Breathing Rituals</h3><p>Interactive animations guide your breath with gentle visual cues and proven techniques.</p></div>
+      <div class="feature-card"><div class="fic">🌊</div><h3>Ambient Sound Mixer</h3><p>Layer rain, ocean, and forest sounds to sculpt your perfect relaxation soundscape.</p></div>
+      <div class="feature-card"><div class="fic">📈</div><h3>Progress Insights</h3><p>Track streaks, total minutes, and weekly practice with beautifully rendered charts.</p></div>
+      <div class="feature-card"><div class="fic">🌙</div><h3>Sleep Rituals</h3><p>Wind-down routines designed to ease your mind into deep, restorative slumber.</p></div>
+      <div class="feature-card"><div class="fic">😌</div><h3>Mood Tracking</h3><p>Log your emotional state to uncover patterns and deepen your self-understanding.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDITATION -->
+<section class="section" id="meditation" style="background:var(--surface)">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Sessions</div>
+      <h2>Find your practice</h2>
+      <p class="section-desc">Filter by intention and discover the session that meets you where you are.</p>
+    </div>
+    <div class="filter-row reveal">
+      <button class="filter-pill active" onclick="filterMed(this,'all')">All</button>
+      <button class="filter-pill" onclick="filterMed(this,'beginner')">Beginner</button>
+      <button class="filter-pill" onclick="filterMed(this,'stress')">Stress Relief</button>
+      <button class="filter-pill" onclick="filterMed(this,'sleep')">Sleep</button>
+      <button class="filter-pill" onclick="filterMed(this,'focus')">Focus</button>
+      <button class="filter-pill" onclick="filterMed(this,'anxiety')">Anxiety</button>
+    </div>
+    <div class="med-grid" id="med-grid"></div>
+  </div>
+</section>
+
+<!-- BREATHING -->
+<section class="section" id="mindfulness">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Breathwork</div>
+      <h2>Breathe with<br><em>intention</em></h2>
+      <p class="section-desc">Follow the guided animation. Let each cycle anchor you to this present moment.</p>
+    </div>
+    <div class="breath-wrap reveal">
+      <div class="breath-ring-wrap">
+        <div class="br-outer" id="br-outer"></div>
+        <div class="br-inner" id="br-inner"></div>
+        <div class="br-count"><span id="br-num">4</span><span class="br-phase" id="br-phase">breathe in</span></div>
+      </div>
+      <div class="br-text" id="br-text">Inhale slowly...</div>
+      <p class="br-sub" id="br-sub">Follow the expanding circle — breathe in for 4 counts</p>
+      <div class="br-controls">
+        <button class="btn btn-gold" id="br-btn" onclick="toggleBreath()">▶&nbsp; Begin Exercise</button>
+        <select class="psel" id="psel" onchange="changePattern(this.value)">
+          <option value="simple" selected>Simple 4–4</option>
+          <option value="box">Box Breathing 4–4–4–4</option>
+          <option value="478">4–7–8 Relaxing</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:60px">
+      <h3 style="margin-bottom:32px;font-size:1.8rem">Daily Mindfulness Practices</h3>
+      <div class="features-grid">
+        <div class="feature-card" style="cursor:pointer" onclick="toast('Gratitude Practice started 🙏')"><div class="fic">🙏</div><h3>Gratitude Practice</h3><p>Write three things you're grateful for today to shift your mindset toward abundance.</p></div>
+        <div class="feature-card" style="cursor:pointer" onclick="toast('Body Scan started 🧘')"><div class="fic">🫀</div><h3>Body Scan</h3><p>A progressive scan from head to toe to release tension and reconnect with yourself.</p></div>
+        <div class="feature-card" style="cursor:pointer" onclick="toast('Mindful Walking started 🌿')"><div class="fic">🌿</div><h3>Mindful Walking</h3><p>Transform any walk into meditation through focused awareness of each step.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOUNDS -->
+<section class="section" id="relax" style="background:var(--surface)">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Soundscape</div>
+      <h2>Your personal<br>ambient world</h2>
+      <p class="section-desc">Mix layers of sound independently to create your ideal environment for rest or focus.</p>
+    </div>
+    <div class="sound-grid reveal">
+      <div class="sound-card" id="sc-rain" onclick="toggleSound('rain')">
+        <span class="se">🌧️</span>
+        <h3>Rain</h3>
+        <p>Soft rainfall on leaves and rooftops</p>
+        <div class="vol-row"><span>Volume</span><span id="rain-pct">60%</span></div>
+        <input type="range" class="vslider" id="rain-vol" value="60" min="0" max="100" oninput="setVol('rain',this.value)" onclick="event.stopPropagation()">
+      </div>
+      <div class="sound-card" id="sc-ocean" onclick="toggleSound('ocean')">
+        <span class="se">🌊</span>
+        <h3>Ocean</h3>
+        <p>Rhythmic waves rolling onto shore</p>
+        <div class="vol-row"><span>Volume</span><span id="ocean-pct">60%</span></div>
+        <input type="range" class="vslider" id="ocean-vol" value="60" min="0" max="100" oninput="setVol('ocean',this.value)" onclick="event.stopPropagation()">
+      </div>
+      <div class="sound-card" id="sc-forest" onclick="toggleSound('forest')">
+        <span class="se">🌲</span>
+        <h3>Forest</h3>
+        <p>Birdsong and rustling canopy leaves</p>
+        <div class="vol-row"><span>Volume</span><span id="forest-pct">60%</span></div>
+        <input type="range" class="vslider" id="forest-vol" value="60" min="0" max="100" oninput="setVol('forest',this.value)" onclick="event.stopPropagation()">
+      </div>
+    </div>
+    <div class="np-bar-wrap" id="np-bar">
+      <div class="np-wave"><div class="np-wbar"></div><div class="np-wbar"></div><div class="np-wbar"></div><div class="np-wbar"></div><div class="np-wbar"></div></div>
+      <div class="np-info2">
+        <div class="np-nm" id="np-nm">Ambient Mix</div>
+        <div class="np-mt" id="np-mt">Sounds playing</div>
+      </div>
+      <button class="btn btn-glass btn-sm" onclick="stopAllSounds()">■ Stop All</button>
+    </div>
+    <div class="preset-row reveal">
+      <button class="btn btn-glass btn-sm" onclick="applyPreset('sleep')">🌙 Deep Sleep</button>
+      <button class="btn btn-glass btn-sm" onclick="applyPreset('focus')">🎯 Focus Mode</button>
+      <button class="btn btn-glass btn-sm" onclick="applyPreset('rain')">🌧 Rain Night</button>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="section" id="dashboard">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Your Journey</div>
+      <h2>Keep the momentum</h2>
+      <p class="section-desc">Your practice history, streaks, and insights in one beautiful place.</p>
+    </div>
+    <div class="dash-grid reveal">
+      <div class="stat-card">
+        <div class="big-num" id="d-streak">7</div>
+        <div class="stat-lbl">Day Streak 🔥</div>
+        <div class="streak-row" id="streak-pips"></div>
+      </div>
+      <div class="stat-card">
+        <div class="big-num" id="d-mins">142</div>
+        <div class="stat-lbl">Total Minutes</div>
+      </div>
+      <div class="stat-card">
+        <div class="big-num" id="d-sessions">19</div>
+        <div class="stat-lbl">Sessions Done</div>
+      </div>
+      <div class="stat-card">
+        <div class="big-num" id="d-today">0</div>
+        <div class="stat-lbl">Minutes Today</div>
+      </div>
+    </div>
+    <div class="mood-panel reveal">
+      <h3>How are you feeling right now?</h3>
+      <div class="mood-row">
+        <button class="mood-btn" onclick="logMood(this,'😔','Sad')"><span class="moji">😔</span><span class="mlbl">Sad</span></button>
+        <button class="mood-btn" onclick="logMood(this,'😤','Stressed')"><span class="moji">😤</span><span class="mlbl">Stressed</span></button>
+        <button class="mood-btn" onclick="logMood(this,'😐','Neutral')"><span class="moji">😐</span><span class="mlbl">Neutral</span></button>
+        <button class="mood-btn" onclick="logMood(this,'😌','Calm')"><span class="moji">😌</span><span class="mlbl">Calm</span></button>
+        <button class="mood-btn" onclick="logMood(this,'😊','Happy')"><span class="moji">😊</span><span class="mlbl">Happy</span></button>
+      </div>
+    </div>
+    <div class="chart-panel reveal">
+      <h3>This week's practice</h3>
+      <div class="cbars" id="week-chart"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="background:var(--surface)">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Stories</div>
+      <h2>From our community</h2>
+    </div>
+    <div class="test-grid reveal">
+      <div class="test-card"><span class="tqm">"</span><p class="ttext">After three weeks with Serenity, my morning anxiety has genuinely softened. The breathing rituals alone are worth everything.</p><div class="tauth"><div class="tavtr" style="background:linear-gradient(135deg,#2A4A3A,#1A3328)">🌸</div><div><div class="tname">Priya S.</div><div class="trole">Yoga instructor, Mumbai</div></div></div></div>
+      <div class="test-card"><span class="tqm">"</span><p class="ttext">I've tried a dozen meditation apps. This one finally got the design right — it actually feels calm to use.</p><div class="tauth"><div class="tavtr" style="background:linear-gradient(135deg,#1E2E44,#111D30)">🎵</div><div><div class="tname">Marcus L.</div><div class="trole">Software engineer, Berlin</div></div></div></div>
+      <div class="test-card"><span class="tqm">"</span><p class="ttext">The sound mixer is pure magic. Rain + forest at bedtime and I'm asleep in minutes. Nothing else comes close.</p><div class="tauth"><div class="tavtr" style="background:linear-gradient(135deg,#3A3018,#261F08)">🌙</div><div><div class="tname">Aisha T.</div><div class="trole">Teacher, Nairobi</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2>Begin your practice today</h2>
+      <p>Join thousands who have found stillness, clarity, and rest through daily mindfulness.</p>
+      <button class="btn btn-gold" style="padding:16px 48px;font-size:.85rem" onclick="openModal('signup')">Get started — it's free</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="logo" href="#home" style="font-size:1.45rem"><div class="logo-gem" style="width:24px;height:24px"></div>Serenity</a>
+        <p>A calming space for the modern mind. Practice stillness, nurture clarity, rest deeply.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Practice</h4>
+        <a href="#meditation">Meditations</a>
+        <a href="#mindfulness">Breathwork</a>
+        <a href="#relax">Soundscapes</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="#" onclick="openModal('login');return false">Sign In</a>
+        <a href="#" onclick="openModal('signup');return false">Create Account</a>
+        <a href="#dashboard">My Journey</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-btm">
+      <span>© 2026 Serenity. All rights reserved.</span>
+      <span>Made with ✦ for a calmer world</span>
+    </div>
+  </div>
+</footer>
+
+<!-- AUTH MODAL -->
+<div class="overlay" id="auth-modal" onclick="overlayClose(event)">
+  <div class="modal">
+    <button class="mx" onclick="closeModal()">✕</button>
+    <h2 id="modal-h">Welcome back</h2>
+    <p class="modal-sub" id="modal-sub">Sign in to your Serenity account</p>
+    <div class="tab-row">
+      <button class="tab on" id="tab-in" onclick="switchTab('login')">Sign In</button>
+      <button class="tab" id="tab-up" onclick="switchTab('signup')">Create Account</button>
+    </div>
+    <div id="form-login">
+      <div class="fg"><label>Email</label><input class="fi" id="l-email" type="email" placeholder="you@example.com" oninput="clearErr(this)"><div class="ferr" id="l-email-e"></div></div>
+      <div class="fg"><label>Password</label><input class="fi" id="l-pw" type="password" placeholder="Your password" oninput="clearErr(this)"><div class="ferr" id="l-pw-e"></div></div>
+      <button class="fsub" onclick="doLogin()">Sign In →</button>
+    </div>
+    <div id="form-signup" style="display:none">
+      <div class="fg"><label>Full Name</label><input class="fi" id="s-name" type="text" placeholder="Your name" oninput="clearErr(this)"><div class="ferr" id="s-name-e"></div></div>
+      <div class="fg"><label>Email</label><input class="fi" id="s-email" type="email" placeholder="you@example.com" oninput="clearErr(this)"><div class="ferr" id="s-email-e"></div></div>
+      <div class="fg"><label>Password</label><input class="fi" id="s-pw" type="password" placeholder="Min 8 chars, 1 uppercase, 1 number" oninput="clearErr(this)"><div class="ferr" id="s-pw-e"></div></div>
+      <div class="fg"><label>Confirm Password</label><input class="fi" id="s-pw2" type="password" placeholder="Repeat password" oninput="clearErr(this)"><div class="ferr" id="s-pw2-e"></div></div>
+      <button class="fsub" onclick="doSignup()">Create Account →</button>
+    </div>
+    <div class="mfoot" id="modal-switch"></div>
+  </div>
+</div>
+
+<!-- MINI PLAYER -->
+<div class="player" id="player">
+  <div class="pp-art" id="pp-art">🧘</div>
+  <div class="pp-info">
+    <div class="pp-nm" id="pp-nm">Session</div>
+    <div class="pp-mt" id="pp-mt">—</div>
+  </div>
+  <div class="pp-prog">
+    <div class="pp-track" onclick="seekPlayer(event)"><div class="pp-fill" id="pp-fill"></div></div>
+    <div class="pp-times"><span id="pp-cur">0:00</span><span id="pp-dur">—</span></div>
+  </div>
+  <div class="pp-btns">
+    <button class="pp-play" id="pp-play" onclick="togglePlayer()">⏸</button>
+    <button class="pp-x" onclick="closePlayer()">✕</button>
+  </div>
+</div>
+
+<!-- TOAST TRAY -->
+<div class="toast-tray" id="toasts"></div>
+
+<script>
+/* ═══════════════════════════════════════════════
+   DATA
+═══════════════════════════════════════════════ */
+const MEDS = [
+  {id:1,title:'Morning Calm',cat:'beginner',bg:'bg1',icon:'☀️',dur:5,desc:'A gentle start for your day'},
+  {id:2,title:'Stress Relief',cat:'stress',bg:'bg2',icon:'💧',dur:10,desc:'Release tension with every exhale'},
+  {id:3,title:'Deep Sleep',cat:'sleep',bg:'bg3',icon:'🌙',dur:15,desc:'Drift into restful slumber'},
+  {id:4,title:'Focus Flow',cat:'focus',bg:'bg4',icon:'🎯',dur:12,desc:'Sharpen your concentration'},
+  {id:5,title:'Anxiety Ease',cat:'anxiety',bg:'bg5',icon:'🫧',dur:8,desc:'Soften anxious thoughts'},
+  {id:6,title:'Body Awareness',cat:'beginner',bg:'bg6',icon:'🌿',dur:7,desc:'Connect with your physical self'},
+];
+
+/* ═══════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════ */
+let S = JSON.parse(localStorage.getItem('serenity_v2')||'null') || {
+  streak:7, totalMins:142, sessions:19, todayMins:0,
+  weekData:[12,20,8,25,15,10,0],
+  mood:null, user:null, isDark:true
+};
+function save(){ localStorage.setItem('serenity_v2',JSON.stringify(S)); }
+
+/* ═══════════════════════════════════════════════
+   THEME
+═══════════════════════════════════════════════ */
+function applyTheme(){
+  document.body.classList.toggle('light', !S.isDark);
+  document.getElementById('theme-btn').textContent = S.isDark ? '🌙' : '☀️';
+}
+function toggleTheme(){ S.isDark = !S.isDark; save(); applyTheme(); }
+applyTheme();
+
+/* ═══════════════════════════════════════════════
+   SCROLL + NAV
+═══════════════════════════════════════════════ */
+const hdr = document.getElementById('hdr');
+const navAs = document.querySelectorAll('#main-nav a');
+window.addEventListener('scroll',()=>{
+  hdr.classList.toggle('scrolled', window.scrollY > 50);
+  const secs = ['home','features','meditation','mindfulness','relax','dashboard'];
+  let cur = 'home';
+  secs.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el && window.scrollY >= el.offsetTop - 130) cur=id;
+  });
+  navAs.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+cur));
+  revealCheck();
+});
+
+function smoothTo(id){ document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); }
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════════ */
+function revealCheck(){
+  document.querySelectorAll('.reveal').forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('in');
+  });
+}
+window.addEventListener('load', revealCheck);
+setTimeout(revealCheck, 100);
+
+/* ═══════════════════════════════════════════════
+   MEDITATION GRID
+═══════════════════════════════════════════════ */
+let activeFilter = 'all';
+function renderMeds(){
+  const g = document.getElementById('med-grid');
+  const list = activeFilter==='all' ? MEDS : MEDS.filter(m=>m.cat===activeFilter);
+  g.innerHTML = list.map(m=>`
+    <div class="med-card" onclick="playMed(${m.id})">
+      <div class="med-thumb ${m.bg}">${m.icon}</div>
+      <div class="med-body">
+        <h3>${m.title}</h3>
+        <p>${m.desc}</p>
+        <div class="med-foot">
+          <span class="dur-badge">⏱ ${m.dur} min</span>
+          <button class="play-btn" onclick="event.stopPropagation();playMed(${m.id})">▶</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+function filterMed(el,cat){
+  document.querySelectorAll('.filter-pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active'); activeFilter=cat; renderMeds();
+}
+renderMeds();
+
+/* ═══════════════════════════════════════════════
+   MEDITATION PLAYER
+═══════════════════════════════════════════════ */
+let pTimer=null, pSec=0, pDur=0, pPlaying=false, pMed=null;
+
+function playMed(id){
+  const m = MEDS.find(x=>x.id===id);
+  if(!m) return;
+  pMed=m; pDur=m.dur*60; pSec=0; pPlaying=true;
+  document.getElementById('pp-art').textContent=m.icon;
+  document.getElementById('pp-nm').textContent=m.title;
+  document.getElementById('pp-mt').textContent=`${m.dur} min · ${m.cat}`;
+  document.getElementById('pp-dur').textContent=fmt(pDur);
+  document.getElementById('pp-fill').style.width='0%';
+  document.getElementById('pp-cur').textContent='0:00';
+  document.getElementById('pp-play').textContent='⏸';
+  document.getElementById('player').classList.add('show');
+  clearInterval(pTimer);
+  pTimer=setInterval(()=>{
+    if(!pPlaying) return;
+    pSec++;
+    if(pSec>=pDur){ clearInterval(pTimer); pPlaying=false; pSec=pDur; document.getElementById('pp-play').textContent='▶'; sessionDone(m.dur); }
+    document.getElementById('pp-fill').style.width=(pSec/pDur*100)+'%';
+    document.getElementById('pp-cur').textContent=fmt(pSec);
+  },1000);
+  toast(`Now playing: ${m.title} 🧘`);
+}
+function togglePlayer(){ pPlaying=!pPlaying; document.getElementById('pp-play').textContent=pPlaying?'⏸':'▶'; }
+function closePlayer(){ clearInterval(pTimer); document.getElementById('player').classList.remove('show'); pPlaying=false; }
+function seekPlayer(e){
+  const pct=e.offsetX/e.currentTarget.offsetWidth;
+  pSec=Math.floor(pct*pDur);
+  document.getElementById('pp-fill').style.width=(pct*100)+'%';
+  document.getElementById('pp-cur').textContent=fmt(pSec);
+}
+function fmt(s){ return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`; }
+function sessionDone(mins){
+  S.totalMins+=mins; S.sessions++; S.todayMins+=mins;
+  S.weekData[6]=(S.weekData[6]||0)+mins;
+  document.getElementById('d-mins').textContent=S.totalMins;
+  document.getElementById('d-sessions').textContent=S.sessions;
+  document.getElementById('d-today').textContent=S.todayMins;
+  renderChart(); save();
+  toast(`Session complete! +${mins} min 🎉`);
+}
+
+/* ═══════════════════════════════════════════════
+   BREATHING EXERCISE
+═══════════════════════════════════════════════ */
+const PATTERNS = {
+  simple:[{phase:'Breathe in',dur:4,scale:1.8},{phase:'Breathe out',dur:4,scale:1}],
+  box:   [{phase:'Breathe in',dur:4,scale:1.8},{phase:'Hold',dur:4,scale:1.8},{phase:'Breathe out',dur:4,scale:1},{phase:'Hold',dur:4,scale:1}],
+  '478': [{phase:'Breathe in',dur:4,scale:1.8},{phase:'Hold',dur:7,scale:1.8},{phase:'Breathe out',dur:8,scale:1}]
+};
+let bRunning=false, bInterval=null, bPhase=0, bCount=0, bPattern=PATTERNS.simple;
+
+function changePattern(v){ bPattern=PATTERNS[v]; if(bRunning){ stopBreath(); startBreath(); }}
+function toggleBreath(){ bRunning?stopBreath():startBreath(); }
+function startBreath(){
+  bRunning=true;
+  document.getElementById('br-btn').innerHTML='■&nbsp; Stop';
+  bPhase=0; runPhase();
+}
+function runPhase(){
+  if(!bRunning) return;
+  const p=bPattern[bPhase]; bCount=p.dur;
+  const T={'Breathe in':'Inhale slowly...','Hold':'Hold steady...','Breathe out':'Exhale gently...'};
+  document.getElementById('br-text').textContent=T[p.phase]||p.phase;
+  document.getElementById('br-phase').textContent=p.phase.toLowerCase();
+  document.getElementById('br-num').textContent=bCount;
+  document.getElementById('br-inner').style.transform=`translate(-50%,-50%) scale(${p.scale})`;
+  document.getElementById('br-outer').style.transform=`translate(-50%,-50%) scale(${p.scale*.88})`;
+  clearInterval(bInterval);
+  bInterval=setInterval(()=>{
+    bCount--;
+    document.getElementById('br-num').textContent=bCount;
+    if(bCount<=0){ clearInterval(bInterval); bPhase=(bPhase+1)%bPattern.length; runPhase(); }
+  },1000);
+}
+function stopBreath(){
+  bRunning=false; clearInterval(bInterval);
+  document.getElementById('br-btn').innerHTML='▶&nbsp; Begin Exercise';
+  document.getElementById('br-text').textContent='Inhale slowly...';
+  document.getElementById('br-phase').textContent='breathe in';
+  document.getElementById('br-num').textContent='4';
+  document.getElementById('br-inner').style.transform='translate(-50%,-50%) scale(1)';
+  document.getElementById('br-outer').style.transform='translate(-50%,-50%) scale(1)';
+}
+
+/* ═══════════════════════════════════════════════
+   SOUND MIXER
+═══════════════════════════════════════════════ */
+const activeSounds={};
+function toggleSound(name){
+  activeSounds[name]=!activeSounds[name];
+  document.getElementById('sc-'+name).classList.toggle('active',!!activeSounds[name]);
+  updateNP();
+}
+function setVol(name,v){ document.getElementById(name+'-pct').textContent=v+'%'; }
+function stopAllSounds(){
+  ['rain','ocean','forest'].forEach(n=>{ activeSounds[n]=false; document.getElementById('sc-'+n)?.classList.remove('active'); });
+  updateNP();
+}
+function updateNP(){
+  const on=Object.keys(activeSounds).filter(k=>activeSounds[k]);
+  const el=document.getElementById('np-bar');
+  if(on.length>0){
+    el.classList.add('show');
+    document.getElementById('np-nm').textContent=on.map(n=>n[0].toUpperCase()+n.slice(1)).join(' + ');
+    document.getElementById('np-mt').textContent=`${on.length} sound${on.length>1?'s':''} playing`;
+  } else { el.classList.remove('show'); }
+}
+function applyPreset(name){
+  stopAllSounds();
+  if(name==='sleep'){
+    activeSounds.rain=true; activeSounds.ocean=true;
+    document.getElementById('sc-rain').classList.add('active');
+    document.getElementById('sc-ocean').classList.add('active');
+    document.getElementById('rain-vol').value=40; setVol('rain',40);
+    document.getElementById('ocean-vol').value=65; setVol('ocean',65);
+  } else if(name==='focus'){
+    activeSounds.forest=true;
+    document.getElementById('sc-forest').classList.add('active');
+    document.getElementById('forest-vol').value=50; setVol('forest',50);
+  } else if(name==='rain'){
+    activeSounds.rain=true;
+    document.getElementById('sc-rain').classList.add('active');
+    document.getElementById('rain-vol').value=80; setVol('rain',80);
+  }
+  updateNP(); toast('Preset applied 🎵');
+}
+
+/* ═══════════════════════════════════════════════
+   DASHBOARD
+═══════════════════════════════════════════════ */
+function renderStreak(){
+  const el=document.getElementById('streak-pips'); el.innerHTML='';
+  for(let i=0;i<7;i++){
+    const d=document.createElement('div');
+    d.className='spip'+(i<S.streak?' on':'');
+    el.appendChild(d);
+  }
+}
+function renderChart(){
+  const el=document.getElementById('week-chart');
+  const days=['M','T','W','T','F','S','S'];
+  const max=Math.max(...S.weekData,1);
+  el.innerHTML=S.weekData.map((v,i)=>`
+    <div class="bwrap">
+      <div class="cbar${i===6?' today':''}" style="height:${(v/max)*100}%" title="${v} min"></div>
+      <div class="bday">${days[i]}</div>
+    </div>`).join('');
+}
+function logMood(el,emoji,label){
+  document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+  S.mood={emoji,label,time:Date.now()}; save();
+  toast(`Mood logged: ${emoji} ${label}`);
+}
+// Restore mood
+if(S.mood){
+  setTimeout(()=>{
+    document.querySelectorAll('.mood-btn').forEach(b=>{
+      if(b.querySelector('.mlbl')?.textContent===S.mood.label) b.classList.add('sel');
+    });
+  },100);
+}
+document.getElementById('d-streak').textContent=S.streak;
+document.getElementById('d-mins').textContent=S.totalMins;
+document.getElementById('d-sessions').textContent=S.sessions;
+document.getElementById('d-today').textContent=S.todayMins;
+renderStreak(); renderChart();
+
+/* ═══════════════════════════════════════════════
+   AUTH MODAL
+═══════════════════════════════════════════════ */
+function openModal(tab='login'){
+  document.getElementById('auth-modal').classList.add('open');
+  switchTab(tab);
+}
+function closeModal(){ document.getElementById('auth-modal').classList.remove('open'); }
+function overlayClose(e){ if(e.target===document.getElementById('auth-modal')) closeModal(); }
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+function switchTab(tab){
+  const login=tab==='login';
+  document.getElementById('form-login').style.display=login?'block':'none';
+  document.getElementById('form-signup').style.display=login?'none':'block';
+  document.getElementById('tab-in').classList.toggle('on',login);
+  document.getElementById('tab-up').classList.toggle('on',!login);
+  document.getElementById('modal-h').textContent=login?'Welcome back':'Create account';
+  document.getElementById('modal-sub').textContent=login?'Sign in to your Serenity account':'Begin your mindfulness journey';
+  document.getElementById('modal-switch').innerHTML=login
+    ?`Don't have an account? <a href="#" onclick="switchTab('signup');return false">Sign up free</a>`
+    :`Already have an account? <a href="#" onclick="switchTab('login');return false">Sign in</a>`;
+}
+
+function fieldErr(id,eid,msg){
+  const i=document.getElementById(id),e=document.getElementById(eid);
+  i.classList.add('err'); e.textContent=msg; e.classList.add('show'); i.focus(); return false;
+}
+function clearErr(inp){ inp.classList.remove('err'); const e=document.getElementById(inp.id+'-e'); if(e) e.classList.remove('show'); }
+const vEmail=e=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+const vPw=p=>p.length>=8&&/[A-Z]/.test(p)&&/[0-9]/.test(p);
+
+function doLogin(){
+  const em=document.getElementById('l-email').value.trim();
+  const pw=document.getElementById('l-pw').value;
+  if(!em) return fieldErr('l-email','l-email-e','Email is required');
+  if(!vEmail(em)) return fieldErr('l-email','l-email-e','Enter a valid email address');
+  if(!pw) return fieldErr('l-pw','l-pw-e','Password is required');
+  const users=JSON.parse(localStorage.getItem('serenity_users')||'[]');
+  const u=users.find(u=>u.email===em&&u.pw===btoa(pw));
+  if(!u) return fieldErr('l-pw','l-pw-e','Incorrect email or password');
+  S.user={name:u.name,email:u.email}; save(); closeModal(); toast(`Welcome back, ${u.name}! 🌿`);
+}
+function doSignup(){
+  const name=document.getElementById('s-name').value.trim();
+  const em=document.getElementById('s-email').value.trim();
+  const pw=document.getElementById('s-pw').value;
+  const pw2=document.getElementById('s-pw2').value;
+  if(!name) return fieldErr('s-name','s-name-e','Name is required');
+  if(!em) return fieldErr('s-email','s-email-e','Email is required');
+  if(!vEmail(em)) return fieldErr('s-email','s-email-e','Enter a valid email address');
+  if(!vPw(pw)) return fieldErr('s-pw','s-pw-e','Min 8 characters, 1 uppercase, 1 number');
+  if(pw!==pw2) return fieldErr('s-pw2','s-pw2-e','Passwords do not match');
+  const users=JSON.parse(localStorage.getItem('serenity_users')||'[]');
+  if(users.find(u=>u.email===em)) return fieldErr('s-email','s-email-e','An account with this email already exists');
+  users.push({name,email:em,pw:btoa(pw)});
+  localStorage.setItem('serenity_users',JSON.stringify(users));
+  S.user={name,email:em}; save(); closeModal(); toast(`Welcome to Serenity, ${name} 🌱`);
+}
+
+/* ═══════════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════════ */
+function toast(msg,type='ok'){
+  const tray=document.getElementById('toasts');
+  const el=document.createElement('div');
+  el.className=`toast ${type}`;
+  el.innerHTML=`<span class="ti">${type==='ok'?'✦':'✕'}</span><span>${msg}</span>`;
+  tray.appendChild(el);
+  setTimeout(()=>{ el.classList.add('toast-out'); setTimeout(()=>el.remove(),300); },3500);
+}
+</script>
+</body>
+</html>

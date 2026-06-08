@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLARA — Drive Beyond Luxury</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/fleet.css">
+  <link rel="stylesheet" href="css/rental.css">
+  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/compare.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo">SOLARA</div>
+  <div class="ld-tag">Drive Beyond Luxury</div>
+  <div class="ld-prog"></div>
+</div>
+
+<!-- MOBILE MENU -->
+<nav class="mob-menu" id="mobMenu">
+  <a href="#hero" onclick="closeMob()">Home</a>
+  <a href="#fleet" onclick="closeMob()">Fleet</a>
+  <a href="#rental" onclick="closeMob()">Rentals</a>
+  <a href="#experience" onclick="closeMob()">Experience</a>
+  <a href="#compare" onclick="closeMob()">Compare</a>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="login.html" onclick="closeMob()">Login</a>
+  <a href="register.html" onclick="closeMob()">Sign Up</a>
+  <a href="admin.html" onclick="closeMob()">Admin</a>
+</nav>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <a class="nav-logo" href="#hero">SOLARA</a>
+  <ul class="nav-links">
+    <li><a href="#fleet">Fleet</a></li>
+    <li><a href="#rental">Rentals</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#compare">Compare</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="register.html">Sign Up</a></li>
+    <li><a href="admin.html">Admin</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="icon-btn" id="cartBtn" title="Cart" onclick="openCart()">
+      🛒<span class="cart-badge" id="cartBadge">0</span>
+    </button>
+    <a href="#contact" class="nav-cta">Book Now</a>
+    <div class="hbg" id="hbg" onclick="toggleMob()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- CART OVERLAY -->
+<div id="cart-overlay" onclick="closeCart()"></div>
+
+<!-- CART SIDEBAR -->
+<div id="cart-side">
+  <div class="cart-head">
+    <div>
+      <div class="cart-title">Your Selection</div>
+      <div class="cart-sub">Review before checkout</div>
+    </div>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div id="cartItems" class="cart-items"></div>
+  <div id="cartFoot" class="cart-foot">
+    <div class="cart-summary">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">₹0</span>
+    </div>
+    <div class="cart-summary">
+      <span>Total</span>
+      <span id="cartTotal">₹0</span>
+    </div>
+    <button class="btn-g" onclick="startCheckout()">Proceed to Checkout</button>
+    <button class="btn-o" onclick="clearCart()">Clear Cart</button>
+  </div>
+</div>
+
+<div id="chk-modal">
+  <div class="chk-box">
+    <div class="chk-head">
+      <h2>Checkout</h2>
+      <button class="cm-close" onclick="closeCheckout()">✕</button>
+    </div>
+    <div class="chk-stepper">
+      <span class="chk-step active">Summary</span>
+      <span class="chk-step">Options</span>
+      <span class="chk-step">Payment</span>
+      <span class="chk-step">Review</span>
+    </div>
+    <div class="chk-panel active" id="chkP0">
+      <div class="chk-sec">
+        <div class="chk-sec-t">Order Summary</div>
+        <div id="chkOrderItems"></div>
+      </div>
+      <div class="chk-sec">
+        <div class="chk-sec-t">Select Purchase Type</div>
+        <div class="buy-opt-tabs">
+          <button class="boTab on" onclick="selectPurchaseType('buy', this)">Buy</button>
+          <button class="boTab" onclick="selectPurchaseType('finance', this)">Finance</button>
+          <button class="boTab" onclick="selectPurchaseType('lease', this)">Lease</button>
+        </div>
+        <div id="buyOpts"></div>
+      </div>
+      <div class="chk-nav">
+        <button class="chk-next" onclick="chkNext()">Continue →</button>
+      </div>
+    </div>
+    <div class="chk-panel" id="chkP1">
+      <div class="chk-sec">
+        <div class="chk-sec-t">Payment Method</div>
+        <div class="chk-grid3">
+          <button class="boTab on" onclick="selectPayMethod('card', this)">Card</button>
+          <button class="boTab" onclick="selectPayMethod('bank', this)">Bank</button>
+          <button class="boTab" onclick="selectPayMethod('crypto', this)">Crypto</button>
+        </div>
+      </div>
+      <div id="payMethodContent"></div>
+      <div class="chk-nav">
+        <button class="chk-back" onclick="chkBack()">← Back</button>
+        <button class="chk-next" onclick="chkNext()">Review Order →</button>
+      </div>
+    </div>
+    <div class="chk-panel" id="chkP2">
+      <div class="chk-sec">
+        <div class="chk-sec-t">Final Review</div>
+        <div id="chkReview"></div>
+      </div>
+      <div style="padding:1.2rem;background:rgba(201,168,76,.08);border:1px solid var(--bdr);margin-bottom:1.5rem;font-size:.78rem;color:var(--txt2);line-height:1.7">
+        ✦ By placing this order you agree to SOLARA's purchase terms. Our concierge will contact you within 2 hours to confirm your order and arrange delivery logistics.
+      </div>
+      <div class="chk-nav">
+        <button class="chk-back" onclick="chkBack()">← Back</button>
+        <button class="chk-next" onclick="placeOrder()" style="background:linear-gradient(90deg,var(--gold-d),var(--gold-l))">Place Order ✦</button>
+      </div>
+    </div>
+    <div class="chk-panel" id="chkP3">
+      <div style="padding:2rem 0;text-align:center">
+        <div class="success-check">✓</div>
+        <div class="success-title">Order Confirmed!</div>
+        <p class="success-sub">Thank you for choosing SOLARA. Your concierge will reach out within 2 hours to arrange everything to your specifications.</p>
+        <div class="order-ref"><small>Order Reference</small><strong id="orderRef"></strong></div>
+        <button class="btn-g" onclick="closeCheckout();clearCart()" style="margin:0 auto;display:inline-flex">Continue Browsing →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAR MODAL -->
+<div id="car-modal">
+  <div class="cm-box">
+    <button class="cm-close" onclick="closeCarModal()">✕</button>
+    <img class="cm-img" id="cmImg" src="" alt="">
+    <div class="cm-body">
+      <div class="cm-brand" id="cmBrand"></div>
+      <h2 class="cm-name" id="cmName"></h2>
+      <p class="cm-desc" id="cmDesc"></p>
+      <div class="cm-specs" id="cmSpecs"></div>
+      <div class="cm-feat">
+        <div class="cm-feat-t">Key Features</div>
+        <ul class="cm-feat-list" id="cmFeatures"></ul>
+      </div>
+      <div class="cm-price-row">
+        <div>
+          <div style="font-size:.6rem;letter-spacing:.2em;color:var(--txt3);text-transform:uppercase;margin-bottom:.3rem">Purchase Price</div>
+          <div class="cm-price-buy" id="cmPrice"></div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:.6rem;letter-spacing:.2em;color:var(--txt3);text-transform:uppercase;margin-bottom:.3rem">Rental Rate</div>
+          <div class="cm-price-rent"><strong id="cmRental"></strong> / day</div>
+        </div>
+      </div>
+      <div class="cm-btns">
+        <button class="btn-g" id="cmBuyBtn" onclick="">Add to Cart — Purchase</button>
+        <button class="btn-o" id="cmRentBtn" onclick="">Enquire to Rent</button>
+        <button class="btn-o" style="padding:16px 20px;" id="cmWishBtn" onclick="">♥</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTIFICATION -->
+<div id="notif"><span id="notifTxt"></span></div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1612825173281-9a193378527e?w=1800&q=80&auto=format&fit=crop" alt="Luxury Car" loading="eager">
+  </div>
+  <div class="hero-c">
+    <div class="hero-pill"><span class="hero-pill-dot"></span>Premium Collection 2025</div>
+    <h1 class="hero-h">Drive Beyond<br><span class="it gd">Luxury</span></h1>
+    <p class="hero-p">Where exclusivity meets performance. Discover, own, or rent the world's most coveted automobiles through an experience that mirrors the showrooms of Monaco.</p>
+    <div class="hero-btns">
+      <a href="#fleet" class="btn-g">Explore Fleet →</a>
+      <a href="#rental" class="btn-o">Rent a Vehicle</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><span class="hstat-n">200+</span><span class="hstat-l">Vehicles</span></div>
+    <div class="hstat"><span class="hstat-n">50+</span><span class="hstat-l">Brands</span></div>
+    <div class="hstat"><span class="hstat-n">10K+</span><span class="hstat-l">Clients</span></div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- BRANDS -->
+<div id="brands">
+  <div class="mq-wrap">
+    <div class="mq-track">
+      <span class="bname">Lamborghini</span><span class="bdot"></span><span class="bname">Ferrari</span><span class="bdot"></span><span class="bname">Rolls-Royce</span><span class="bdot"></span><span class="bname">Bentley</span><span class="bdot"></span><span class="bname">McLaren</span><span class="bdot"></span><span class="bname">Aston Martin</span><span class="bdot"></span><span class="bname">Bugatti</span><span class="bdot"></span><span class="bname">Porsche</span><span class="bdot"></span><span class="bname">Maserati</span><span class="bdot"></span><span class="bname">Pagani</span><span class="bdot"></span><span class="bname">Koenigsegg</span><span class="bdot"></span><span class="bname">Lamborghini</span><span class="bdot"></span><span class="bname">Ferrari</span><span class="bdot"></span><span class="bname">Rolls-Royce</span><span class="bdot"></span><span class="bname">Bentley</span><span class="bdot"></span><span class="bname">McLaren</span><span class="bdot"></span><span class="bname">Aston Martin</span><span class="bdot"></span><span class="bname">Bugatti</span><span class="bdot"></span><span class="bname">Porsche</span><span class="bdot"></span><span class="bname">Maserati</span>
+    </div>
+  </div>
+</div>
+
+<!-- FLEET -->
+<section id="fleet">
+  <div class="fleet-top">
+    <div>
+      <div class="s-label rv">Our Collection</div>
+      <h2 class="s-title rv rv1">The Finest <span class="it">Machines</span></h2>
+      <p class="s-sub rv rv2">Each vehicle is hand-selected for its pedigree, performance, and prestige.</p>
+    </div>
+    <div class="filt-wrap rv rv2">
+      <button class="ftab on" data-f="all">All</button>
+      <button class="ftab" data-f="hypercar">Hypercar</button>
+      <button class="ftab" data-f="sports">Sports</button>
+      <button class="ftab" data-f="sedan">Sedan</button>
+      <button class="ftab" data-f="suv">SUV</button>
+      <button class="ftab" data-f="convertible">Convertible</button>
+    </div>
+  </div>
+  <div class="fleet-grid" id="fleetGrid"></div>
+  <div class="lmw"><button class="btn-o" onclick="loadMore()">View Full Collection</button></div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-i">
+    <div class="s-label rv">The SOLARA Difference</div>
+    <h2 class="s-title rv rv1">Crafted for the<br><span class="it">Discerning Few</span></h2>
+    <div class="exp-g">
+      <div class="exp-vis rv">
+        <img class="main" src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80&auto=format&fit=crop" alt="Luxury interior">
+        <img class="accent" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80&auto=format&fit=crop" alt="Sports car">
+        <div class="exp-corner"></div>
+      </div>
+      <div>
+        <p class="s-sub rv" style="max-width:100%;margin-bottom:0">SOLARA is not merely a marketplace — it is an intimate encounter with the art of automotive excellence. Every detail speaks of a heritage forged in passion and precision.</p>
+        <div class="pillars">
+          <div class="pillar rv rv1"><span class="pillar-icon">🏆</span><div class="pillar-t">Exclusivity</div><p class="pillar-p">Access to the rarest vehicles on earth, sourced from the world's most prestigious dealers and private collections.</p></div>
+          <div class="pillar rv rv2"><span class="pillar-icon">⚡</span><div class="pillar-t">Performance</div><p class="pillar-p">Every machine meets our rigorous standards of peak engineering, from 0–60 times to track-day readiness.</p></div>
+          <div class="pillar rv rv3"><span class="pillar-icon">✦</span><div class="pillar-t">Craftsmanship</div><p class="pillar-p">Hand-stitched interiors, bespoke finishes, and obsessive attention to every tactile detail.</p></div>
+          <div class="pillar rv rv4"><span class="pillar-icon">💎</span><div class="pillar-t">Innovation</div><p class="pillar-p">Cutting-edge technology harmoniously fused with timeless automotive design philosophy.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RENTAL -->
+<section id="rental">
+  <div class="s-label rv">Luxury Rentals</div>
+  <h2 class="s-title rv rv1">Your Occasion,<br><span class="it">Elevated</span></h2>
+  <p class="s-sub rv rv2" style="margin-bottom:3.5rem">From weddings to corporate events, arrive in a vehicle that commands attention.</p>
+  <div class="r-hero rv">
+    <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1600&q=80&auto=format&fit=crop" alt="Rental">
+    <div class="r-hero-c">
+      <div class="s-label" style="color:#fff;margin-bottom:1rem">Premium Hire</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,3rem);color:#fff;margin-bottom:1rem">Experience the Extraordinary</h3>
+      <p style="color:rgba(255,255,255,.65);max-width:450px;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;margin-bottom:2rem">Every journey deserves a car that matches the moment.</p>
+      <a href="#contact" class="btn-g">Request a Rental</a>
+    </div>
+  </div>
+  <div class="rgrid" id="rentalGrid"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testi">
+  <div class="testi-head">
+    <div class="s-label">Client Stories</div>
+    <h2 class="s-title rv rv1">Words from our<br><span class="it">Valued Clients</span></h2>
+  </div>
+  <div class="ttrack-w"><div class="ttrack" id="ttrack"></div></div>
+</section>
+
+<!-- COMPARE -->
+<section id="compare">
+  <div class="s-label rv">Side By Side</div>
+  <h2 class="s-title rv rv1">Vehicle <span class="it">Comparison</span></h2>
+  <p class="s-sub rv rv2">Find your perfect match with our precision comparison tool.</p>
+  <div class="ctw rv rv2">
+    <table class="ctbl">
+      <thead>
+        <tr>
+          <th></th>
+          <th><img class="ccar-img" src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=300&q=70&auto=format&fit=crop" alt="Lamborghini"><div class="ccn">Lamborghini Huracán</div></th>
+          <th><img class="ccar-img" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=300&q=70&auto=format&fit=crop" alt="Ferrari"><div class="ccn">Ferrari F8 Tributo</div></th>
+          <th><img class="ccar-img" src="https://images.unsplash.com/photo-1555626906-fcf10d6851b4?w=300&q=70&auto=format&fit=crop" alt="McLaren"><div class="ccn">McLaren 720S</div></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Engine</td><td class="hl">5.2L V10</td><td>3.9L V8 TT</td><td>4.0L V8 TT</td></tr>
+        <tr><td>Horsepower</td><td>630 HP</td><td class="hl">710 HP</td><td class="hl">710 HP</td></tr>
+        <tr><td>0–100 km/h</td><td>2.9s</td><td>2.9s</td><td class="hl">2.8s</td></tr>
+        <tr><td>Top Speed</td><td>325 km/h</td><td class="hl">340 km/h</td><td>341 km/h</td></tr>
+        <tr><td>Drive</td><td>AWD</td><td>RWD</td><td>RWD</td></tr>
+        <tr><td>Price (INR)</td><td>₹2,17,00,000</td><td>₹2,32,40,000</td><td class="hl">₹2,48,12,000</td></tr>
+        <tr><td>Rental/Day</td><td class="hl">₹1,49,000</td><td>₹1,83,000</td><td>₹1,99,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-g">
+    <div>
+      <div class="s-label rv">Our Story</div>
+      <h2 class="s-title rv rv1">Born from a<br><span class="it">Passion for Perfection</span></h2>
+      <p class="s-sub rv rv2" style="max-width:100%;margin-bottom:2rem">SOLARA was conceived with a singular obsession: to create the world's most exclusive automotive destination. Every detail — digital or physical — is designed to honour the machines we curate.</p>
+      <div class="tl rv rv3">
+        <div class="tl-item"><div class="tl-y">2020</div><div class="tl-t">The Vision</div><p class="tl-p">SOLARA founded with a mission to redefine the luxury automotive experience in the digital age.</p></div>
+        <div class="tl-item"><div class="tl-y">2021</div><div class="tl-t">First Showroom</div><p class="tl-p">Opened our flagship virtual showroom, featuring 50 hand-selected hypercars and grand tourers.</p></div>
+        <div class="tl-item"><div class="tl-y">2023</div><div class="tl-t">Global Partnerships</div><p class="tl-p">Secured exclusive partnerships with Lamborghini, Ferrari, Rolls-Royce, and 12 other prestige brands.</p></div>
+        <div class="tl-item"><div class="tl-y">2025</div><div class="tl-t">SOLARA 3.0</div><p class="tl-p">Launched our immersive platform, AI recommendations, and global luxury rental network.</p></div>
+      </div>
+    </div>
+    <div class="about-v rv">
+      <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80&auto=format&fit=crop" alt="SOLARA showroom">
+      <div class="abox"><span class="abox-n">15+</span><span class="abox-l">Years<br>Experience</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="s-label rv">Get in Touch</div>
+  <h2 class="s-title rv rv1">Begin Your<br><span class="it">Journey</span></h2>
+  <div class="contact-g">
+    <div class="rv">
+      <p class="c-tag">Whether you wish to purchase, rent, or simply explore — our concierge team is at your service around the clock.</p>
+      <div class="c-links">
+        <a href="https://wa.me/911234567890" class="cli" target="_blank"><div><div class="cli-t">WhatsApp Concierge</div><div class="cli-l">Available 24/7</div></div></a>
+        <a href="mailto:concierge@solara.com" class="cli"><div><div class="cli-t">concierge@solara.com</div><div class="cli-l">Response within 2 hours</div></div></a>
+        <a href="tel:+911234567890" class="cli"><div><div class="cli-t">+91 98765 43210</div><div class="cli-l">Mon–Sat, 9am–8pm</div></div></a>
+        <div class="cli" style="cursor:default"><div><div class="cli-t">SOLARA Showroom, Silver oak uni.</div><div class="cli-l">By appointment only</div></div></div>
+      </div>
+    </div>
+    <div class="rv rv2">
+      <div class="frow">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="Alexander"></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Sterling"></div>
+      </div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="alex@example.com"></div>
+      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210"></div>
+      <div class="fg"><label>Inquiry Type</label><select><option value="">Select</option><option>Purchase Inquiry</option><option>Rental Booking</option><option>Test Drive</option><option>General Inquiry</option></select></div>
+      <div class="fg"><label>Vehicle of Interest</label><input type="text" placeholder="e.g. Lamborghini Huracán EVO"></div>
+      <div class="fg"><label>Message</label><textarea rows="4" placeholder="Share your preferences, timeline, or special requirements..."></textarea></div>
+      <button class="fsub" onclick="showNotif(' Inquiry sent! We\'ll contact you within 2 hours.')">Send Inquiry →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ftgrid">
+    <div>
+      <span class="ftlogo">SOLARA</span>
+      
+      <p class="fttag">Drive Beyond Luxury</p>
+      <div class="ftsocial">
+        <a href="#" class="sbtn">IG</a>
+        <a href="#" class="sbtn">FB</a>
+        <a href="#" class="sbtn">YT</a>
+        <a href="#" class="sbtn">LI</a>
+        <a href="#" class="sbtn">𝕏</a>
+      </div>
+    </div>
+    <div><div class="ftct">Collection</div><ul class="ftlinks"><li><a href="#fleet">Hypercars</a></li><li><a href="#fleet">Sports Cars</a></li><li><a href="#fleet">Luxury Sedans</a></li><li><a href="#fleet">SUVs</a></li><li><a href="#fleet">Convertibles</a></li></ul></div>
+    <div><div class="ftct">Services</div><ul class="ftlinks"><li><a href="#rental">Luxury Rentals</a></li><li><a href="#contact">Test Drive</a></li><li><a href="#fleet">Purchase</a></li><li><a href="#compare">Compare</a></li><li><a href="#contact">Concierge</a></li></ul></div>
+    <div><div class="ftct">Company</div><ul class="ftlinks"><li><a href="#about">About SOLARA</a></li><li><a href="#experience">Our Story</a></li><li><a href="#contact">Careers</a></li><li><a href="#">Press</a></li><li><a href="#">Partnership</a></li></ul></div>
+  </div>
+  <div class="ftbot">
+    <span class="ftcopy">© 2025 SOLARA Automotive. All rights reserved.</span>
+    <div class="ftleg"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script src="js/fleet.js" defer></script>
+<script src="js/rental.js" defer></script>
+<script src="js/experience.js" defer></script>
+<script src="js/compare.js" defer></script>
+<script src="js/auth.js" defer></script>
+</body>
+</html>

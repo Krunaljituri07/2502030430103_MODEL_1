@@ -1,0 +1,46 @@
+@import url('base.css');
+
+.admin-frame{min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:4rem 2rem;background:var(--bg);}
+.admin-wrap{width:min(1180px,100%);padding:2.5rem;background:var(--bg2);border:1px solid rgba(255,255,255,.08);border-radius:8px;box-shadow:0 40px 80px rgba(0,0,0,.25)}
+.admin-head{margin-bottom:2rem}
+.admin-head .s-label{margin-bottom:1rem}
+.admin-head h1{font-family:'Playfair Display',serif;font-size:2.6rem;margin:0;color:var(--txt)}
+.admin-sub{color:var(--txt2);margin-top:1rem;line-height:1.8}
+.admin-form{display:grid;gap:1rem}
+.admin-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.admin-form .form-group{display:flex;flex-direction:column;gap:.65rem}
+.admin-form .form-group label{font-size:.82rem;color:var(--txt2);letter-spacing:.08em;text-transform:uppercase}
+.admin-form .form-group input,
+.admin-form .form-group textarea,
+.admin-form .form-group select{width:100%;padding:1rem 1.15rem;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(255,255,255,.03);color:var(--txt);outline:none}
+.admin-form .form-group textarea{resize:vertical;min-height:120px}
+.admin-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
+.admin-notice{display:none;margin-top:1rem;padding:1rem 1.2rem;border-radius:18px;font-size:.95rem;line-height:1.5}
+.admin-notice.success{display:block;background:rgba(0,209,255,.12);border:1px solid rgba(0,209,255,.2);color:#dffaff}
+.admin-notice.error{display:block;background:rgba(255,80,80,.12);border:1px solid rgba(255,80,80,.2);color:#ffb3b3}
+.admin-back{display:inline-flex;align-items:center;gap:.5rem;color:var(--gold);text-decoration:none;font-weight:700}
+.admin-back:hover{text-decoration:underline}
+.admin-panel{padding:2.5rem 0 0;margin-top:2rem;border-top:1px solid rgba(255,255,255,.08)}
+.admin-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
+.admin-panel h2{font-family:'Playfair Display',serif;font-size:2rem;margin:.25rem 0 0;color:var(--txt)}
+.admin-panel h3{font-size:.86rem;letter-spacing:.18em;text-transform:uppercase;color:var(--txt2);margin:2rem 0 1rem}
+.admin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1.5rem}
+.admin-stat{padding:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px}
+.admin-stat strong{display:block;font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--gold);line-height:1}
+.admin-stat span{display:block;margin-top:.45rem;color:var(--txt2);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.admin-table{overflow:auto;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.02)}
+.admin-table table{width:100%;border-collapse:collapse;min-width:760px}
+.admin-table th,.admin-table td{padding:.9rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);text-align:left;font-size:.86rem;color:var(--txt2)}
+.admin-table th{color:var(--txt);background:rgba(255,255,255,.04);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem}
+.admin-table tr:last-child td{border-bottom:none}
+.status-pill{display:inline-flex;padding:.35rem .65rem;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.status-available{background:rgba(82,224,122,.13);color:#a7ffc2}
+.status-rented{background:rgba(0,209,255,.13);color:#bdf6ff}
+.status-sold{background:rgba(255,80,80,.13);color:#ffb8b8}
+.status-maintenance{background:rgba(224,160,82,.13);color:#ffd9a8}
+.status-pending{background:rgba(224,160,82,.13);color:#ffd9a8}
+.status-active{background:rgba(0,209,255,.13);color:#bdf6ff}
+.status-completed{background:rgba(82,224,122,.13);color:#a7ffc2}
+.status-cancelled{background:rgba(255,80,80,.13);color:#ffb8b8}
+.mini-select{min-width:140px;padding:.65rem;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--txt)}
+@media(max-width:780px){.admin-form .form-row{grid-template-columns:1fr}}

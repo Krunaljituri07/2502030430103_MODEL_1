@@ -1,0 +1,62 @@
+.program-shell {
+  padding: 120px 32px 60px;
+}
+
+.program-header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  margin: 8px 0 12px;
+}
+
+.program-header p {
+  color: #d5d2cb;
+  max-width: 700px;
+}
+
+.program-notice {
+  margin-top: 24px;
+  padding: 18px 22px;
+  border-radius: 22px;
+  background: rgba(201,168,76,.12);
+  border: 1px solid rgba(201,168,76,.2);
+  color: #f5f3eb;
+}
+
+.program-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  margin-top: 36px;
+}
+
+.program-card {
+  padding: 28px;
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  display: grid;
+  gap: 18px;
+}
+
+.program-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: .92rem;
+  color: #d5d2cb;
+}
+
+.program-card h2 {
+  margin: 0;
+}
+
+.program-card p {
+  color: #d5d2cb;
+  margin: 0 0 10px;
+}
+
+@media (max-width: 880px) {
+  .program-grid {
+    grid-template-columns: 1fr;
+  }
+}

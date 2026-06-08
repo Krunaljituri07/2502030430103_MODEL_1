@@ -19,7 +19,8 @@
     "web-vitals": "^2.1.4",
     "express": "^4.18.3",
     "dotenv": "^16.0.3",
-    "bcryptjs": "^2.4.3"
+    "bcryptjs": "^2.4.3",
+    "multer": "^1.4.5-lts.1"
   },
   "scripts": {
     "start": "react-scripts start",

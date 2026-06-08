@@ -1,0 +1,124 @@
+.profile-shell {
+  padding: 120px 32px 60px;
+}
+
+.profile-header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  margin: 8px 0 12px;
+}
+
+.profile-header p {
+  color: #d5d2cb;
+  max-width: 720px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  margin-top: 38px;
+}
+
+.profile-card {
+  padding: 30px;
+  border-radius: 28px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.profile-card h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.profile-card p {
+  color: #d5d2cb;
+  margin-bottom: 16px;
+}
+
+.profile-form {
+  display: grid;
+  gap: 18px;
+}
+
+.profile-form label {
+  display: grid;
+  gap: 10px;
+  font-size: .9rem;
+}
+
+.profile-form textarea {
+  width: 100%;
+  border-radius: 18px;
+  padding: 16px 18px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color: #f5f3eb;
+}
+
+.profile-form textarea:focus {
+  outline: 1px solid rgba(201,168,76,.7);
+}
+
+.form-success {
+  color: #a5f3c7;
+}
+
+.progress-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.progress-row div {
+  padding: 22px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.progress-row span {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.progress-row small {
+  color: #d5d2cb;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.activity-history h3 {
+  margin-bottom: 16px;
+}
+
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 12px;
+}
+
+.activity-item strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.activity-item p {
+  color: #d5d2cb;
+  margin: 0;
+}
+
+@media (max-width: 960px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}

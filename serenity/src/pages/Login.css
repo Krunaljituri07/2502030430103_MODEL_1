@@ -1,0 +1,72 @@
+.auth-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 92px);
+}
+
+.auth-card {
+  width: min(520px, 100%);
+  padding: 38px;
+  border-radius: 30px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 30px 80px rgba(0,0,0,.22);
+}
+
+.auth-card h1 {
+  margin-bottom: 8px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.4rem;
+}
+
+.auth-card p {
+  margin-bottom: 32px;
+  color: #d5d2cb;
+}
+
+.auth-form {
+  display: grid;
+  gap: 18px;
+}
+
+.auth-form label {
+  display: grid;
+  gap: 8px;
+  font-size: .9rem;
+  color: #f5f3eb;
+}
+
+.auth-form input,
+.auth-form textarea {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color: #f5f3eb;
+}
+
+.auth-form input:focus,
+.auth-form textarea:focus {
+  outline: 1px solid rgba(201,168,76,.7);
+}
+
+.form-error {
+  color: #f5b7b1;
+}
+
+.auth-foot {
+  margin-top: 18px;
+  color: #d5d2cb;
+}
+
+.auth-foot a {
+  color: #c9a84c;
+}
+
+@media (max-width: 640px) {
+  .auth-card {
+    padding: 28px;
+  }
+}
